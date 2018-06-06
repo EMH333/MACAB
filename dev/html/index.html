@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="manifest" href="/manifest.json">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>What Day is It?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <script src="js/main.js"></script>
+    <!--<script src="https://unpkg.com/umbrellajs"></script>-->
+    <script aync src="https://unpkg.com/umbrellajs@2.10.1/umbrella.min.js"></script><!--This is a temporary thing to reduce redirects-->
+    <link async rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+        crossorigin="anonymous">
+
+          <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="MACAB">
+    <link rel="apple-touch-icon" href="images/icon-512.png">
+    <link rel="icon" sizes="192x192" href="images/icon-192.png">
+
+    <meta name="theme-color" content="#a4141e">
+</head>
+<body>
+    <div class="flex one top-space">
+        <div>
+            <img src="images/icon-192.png" alt="Logo" width="60" height="60">
+            <h1>MACAB</h1>
+        </div>
+        <div><p class="info" id="top-info">Today is a:</p></div>
+        <div><p id="day"></p></div>
+        <div><p class="info" id="bottom-info">Day</p></div>
+
+        <div class="footer">
+            <a href="finals.html" class="footer-item pseudo button">Finals</a>
+            <a href="schedule.html" class="footer-item pseudo button">Schedules</a>
+        </div>
+        <div class="footer">
+            <a href="about.html" class="footer-item pseudo button">About</a>
+            <button onclick="toggleCal()" class="pseudo footer-item">Calendar</button>
+        </div>
+
+        <div id="calendar_container" class="animated">
+            <div class="arrow left"><a href="#l">&lt;</a></div>
+            <div class="arrow right"><a href="#r">&gt;</a></div>
+            <div id="data_chooser"></div>
+            <div id="calendar_display">
+                <table>
+                    <thead class="primary">
+                        <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr class="r0"><td class="col0"><td class="col1"><td class="col2"><td class="col3"><td class="col4"><td class="col5"><td class="col6"></td></tr>
+                        <tr class="r1"><td class="col0"><td class="col1"><td class="col2"><td class="col3"><td class="col4"><td class="col5"><td class="col6"></td></tr>
+                        <tr class="r2"><td class="col0"><td class="col1"><td class="col2"><td class="col3"><td class="col4"><td class="col5"><td class="col6"></td></tr>
+                        <tr class="r3"><td class="col0"><td class="col1"><td class="col2"><td class="col3"><td class="col4"><td class="col5"><td class="col6"></td></tr>
+                        <tr class="r4"><td class="col0"><td class="col1"><td class="col2"><td class="col3"><td class="col4"><td class="col5"><td class="col6"></td></tr>
+                        <tr class="r5"><td class="col0"><td class="col1"><td class="col2"><td class="col3"><td class="col4"><td class="col5"><td class="col6"></td></tr>
+                    </tbody>
+                </table>
+            </dvi>
+        </div>
+    </div>
+    <div><p class="footer footer-item ">&copy; Ethan Hampton 2018</p></div>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+    console.log("Sending stuff");
+
+    ga('create', 'UA-66393601-5', 'auto');
+    // The following line sets the dimension to the pageview request.
+    ga('set', 'Online', navigator.onLine); 
+    ga('send', 'pageview');
+    </script>       
+</body>
+</html>
