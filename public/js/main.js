@@ -90,7 +90,23 @@ function updateDate(d, sign) {
         }
     }
 }
-document.addEventListener("DOMContentLoaded", function(event){
+
+var displayCalendar = true;
+function toggleCal(){
+    var x = document.getElementById("calendar_container");
+    x.classList.toggle("fadeIn");
+    x.classList.toggle("fadeOut");
+    if(displayCalendar){
+        x.classList.add("fadeIn");
+        x.classList.remove("fadeOut");
+    }else{
+        x.classList.remove("fadeIn");
+        x.classList.add("fadeOut");
+    }
+    displayCalendar = !displayCalendar;
+}
+
+function registerCalendarEventsAndRender(){
     var d = new Date();
     u('#data_chooser').html(d.getFullYear()+'-'+(d.getMonth()+1));
     generateCalendar(d);
@@ -108,21 +124,6 @@ document.addEventListener("DOMContentLoaded", function(event){
         updateListeners();
         return false;
     });
-});
-
-var displayCalendar = true;
-function toggleCal(){
-    var x = document.getElementById("calendar_container");
-    x.classList.toggle("fadeIn");
-    x.classList.toggle("fadeOut");
-    if(displayCalendar){
-        x.classList.add("fadeIn");
-        x.classList.remove("fadeOut");
-    }else{
-        x.classList.remove("fadeIn");
-        x.classList.add("fadeOut");
-    }
-    displayCalendar = !displayCalendar;
 }
 //Origin is First of January 2018
 const EPOCH = new Date(2018, 0, 0);
@@ -174,7 +175,7 @@ var dates = {
 
 function addSummer() {
     //NOTE THIS DATES ARE DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018
-    for (let index = 168; index < 247; index++) {
+    for (var index = 168; index < 247; index++) {
         dates[index] = "N";
     }
 }
@@ -236,7 +237,15 @@ function updateDay(sinceEpoch, fromCal) {
     }
     u("#day").html(day);
 
-    //console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
+    if(dates[total]==null){
+        u("#top-info").text("We Have No Information For That Date! Sorry!");
+        u("#day").text("");
+        u("#bottom-info").text("");
+    }else{
+        u("#bottom-info").text("Day");
+    }
+
+    console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
 }
 
 function updateListeners() {
@@ -257,6 +266,8 @@ function updateListeners() {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     addSummer();
+
+    registerCalendarEventsAndRender();//Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
 

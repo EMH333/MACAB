@@ -48,7 +48,7 @@ var dates = {
 
 function addSummer() {
     //NOTE THIS DATES ARE DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018
-    for (let index = 168; index < 247; index++) {
+    for (var index = 168; index < 247; index++) {
         dates[index] = "N";
     }
 }
@@ -110,7 +110,15 @@ function updateDay(sinceEpoch, fromCal) {
     }
     u("#day").html(day);
 
-    //console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
+    if(dates[total]==null){
+        u("#top-info").text("We Have No Information For That Date! Sorry!");
+        u("#day").text("");
+        u("#bottom-info").text("");
+    }else{
+        u("#bottom-info").text("Day");
+    }
+
+    console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
 }
 
 function updateListeners() {
@@ -131,6 +139,8 @@ function updateListeners() {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     addSummer();
+
+    registerCalendarEventsAndRender();//Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
 

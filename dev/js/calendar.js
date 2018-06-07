@@ -90,7 +90,23 @@ function updateDate(d, sign) {
         }
     }
 }
-document.addEventListener("DOMContentLoaded", function(event){
+
+var displayCalendar = true;
+function toggleCal(){
+    var x = document.getElementById("calendar_container");
+    x.classList.toggle("fadeIn");
+    x.classList.toggle("fadeOut");
+    if(displayCalendar){
+        x.classList.add("fadeIn");
+        x.classList.remove("fadeOut");
+    }else{
+        x.classList.remove("fadeIn");
+        x.classList.add("fadeOut");
+    }
+    displayCalendar = !displayCalendar;
+}
+
+function registerCalendarEventsAndRender(){
     var d = new Date();
     u('#data_chooser').html(d.getFullYear()+'-'+(d.getMonth()+1));
     generateCalendar(d);
@@ -108,19 +124,4 @@ document.addEventListener("DOMContentLoaded", function(event){
         updateListeners();
         return false;
     });
-});
-
-var displayCalendar = true;
-function toggleCal(){
-    var x = document.getElementById("calendar_container");
-    x.classList.toggle("fadeIn");
-    x.classList.toggle("fadeOut");
-    if(displayCalendar){
-        x.classList.add("fadeIn");
-        x.classList.remove("fadeOut");
-    }else{
-        x.classList.remove("fadeIn");
-        x.classList.add("fadeOut");
-    }
-    displayCalendar = !displayCalendar;
 }
