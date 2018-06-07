@@ -9,6 +9,7 @@ var urlsToCache = [
     '/css/style.css',
     '/js/main.js',
     '/images/icon-192.png',
+    '/images/uploadIcon.png',
     'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
     'https://unpkg.com/umbrellajs@2.10.1/umbrella.min.js',
     //'https://www.google-analytics.com/analytics.js',

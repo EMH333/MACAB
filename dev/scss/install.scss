@@ -1,0 +1,19 @@
+.install {
+    background-color: #a4141e;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: 900;
+    display: flex;
+    p{
+        text-align: center;
+        align-items:center;
+        justify-content: center;
+    }
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+
+    visibility: hidden;
+}
