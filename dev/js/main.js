@@ -1,3 +1,4 @@
+/* global u, Cal */
 //Origin is First of January 2018
 const EPOCH = new Date(2018, 0, 0);
 var dates = {
@@ -44,7 +45,7 @@ var dates = {
     165: "A",
     166: "B",
     167: "N",
-}
+};
 
 function addSummer() {
     //NOTE THIS DATES ARE DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018
@@ -87,7 +88,7 @@ function updateDay(sinceEpoch, fromCal) {
         day = dates[total];
     }
     if (day == "A") {
-        properRefrence = "an"
+        properRefrence = "an";
     }
     if (!fromCal) {
         if (add == 1) {
@@ -104,12 +105,12 @@ function updateDay(sinceEpoch, fromCal) {
             u("#top-info").text("Today is " + properRefrence + ":");
         } else {
             var options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
+                weekday: "long",
+                year: "numeric",
+                month: "short",
+                day: "numeric"
             };
-            u("#top-info").text(addDays(total).toLocaleDateString('en-US', options) + " is " + properRefrence + ":");
+            u("#top-info").text(addDays(total).toLocaleDateString("en-US", options) + " is " + properRefrence + ":");
         }
     }
     u("#day").html(day);
@@ -144,7 +145,7 @@ function updateListeners() {
 document.addEventListener("DOMContentLoaded", function (event) {
     addSummer();
 
-    registerCalendarEventsAndRender(); //Register calendar stuff and render all days
+    Cal.registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
 
