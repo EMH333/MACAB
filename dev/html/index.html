@@ -35,6 +35,9 @@
         <div><p class="info" id="bottom-info">Day</p></div>
 
         <div class="footer">
+            <a href="install.html" class="footer-item pseudo button">How to Install</a>
+        </div>
+        <div class="footer">
             <a href="finals.html" class="footer-item pseudo button">Finals</a>
             <a href="schedule.html" class="footer-item pseudo button">Schedules</a>
         </div>
@@ -76,8 +79,9 @@
 
     ga('create', 'UA-66393601-5', 'auto');
     // The following line sets the dimension to the pageview request.
-    ga('set', 'Online', navigator.onLine); 
-    ga('send', 'pageview');
+    ga('send', 'pageview',{
+        'dimension1':  navigator.onLine ? "Online" : "Offline"
+    });
     </script>       
 </body>
 </html>

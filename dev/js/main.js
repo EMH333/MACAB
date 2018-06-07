@@ -145,7 +145,7 @@ function updateListeners() {
 document.addEventListener("DOMContentLoaded", function (event) {
     addSummer();
 
-    Cal.registerCalendarEventsAndRender(); //Register calendar stuff and render all days
+    registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
 

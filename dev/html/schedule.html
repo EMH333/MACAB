@@ -202,8 +202,9 @@
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-66393601-5', 'auto');
-    ga('send', 'pageview');
     // The following line sets the dimension to the pageview request.
-    ga('set', 'Online', navigator.onLine); 
+    ga('send', 'pageview',{
+        'dimension1':  navigator.onLine ? "Online" : "Offline"
+    });
     </script>
 </body>

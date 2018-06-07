@@ -28,6 +28,7 @@
                 him on Instagram as @eharr.ison
                 <br> Please report all bugs to etho "at" ethohampton.com
             </p>
+            <p>Version 1.0.2</p>
             <p>&copy; Ethan Hampton 2018</p>
         </article>
     </div>
@@ -38,9 +39,10 @@
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-66393601-5', 'auto');
-    ga('send', 'pageview');
-    // The following line sets the dimension to the pageview request.
-    ga('set', 'Online', navigator.onLine); 
+    // The following line sets the dimension to the pageview request and sends page view
+    ga('send', 'pageview',{
+        'dimension1':  navigator.onLine ? "Online" : "Offline"
+    });
     </script>
 </body>
 

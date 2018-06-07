@@ -1,87 +1,87 @@
-var CACHE_NAME = 'abday-ethohampton-cache-v1.4';
+var CACHE_NAME = 'abday-ethohampton-cache-v1.0.0';
 var urlsToCache = [
-  '/',
-  '/index.html',
-  '/index.html?utm_source=homescreen',
-  '/about.html',
-  '/schedule.html',
-  '/finals.html',
-  '/css/style.css',
-  '/js/main.js',
-  '/images/icon-192.png',
-  'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
-  'https://unpkg.com/umbrellajs@2.10.1/umbrella.min.js',
-  //'https://www.google-analytics.com/analytics.js',
+    '/',
+    '/index.html',
+    '/index.html?utm_source=direct&utm_medium=homescreen&utm_campaign=homescreen',
+    '/about.html',
+    '/schedule.html',
+    '/finals.html',
+    '/css/style.css',
+    '/js/main.js',
+    '/images/icon-192.png',
+    'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
+    'https://unpkg.com/umbrellajs@2.10.1/umbrella.min.js',
+    //'https://www.google-analytics.com/analytics.js',
 ];
 
 
 self.addEventListener('install', function (event) {
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-    .then(function (cache) {
-      console.log('Opened cache');
-      const request = new Request('https://www.google-analytics.com/analytics.js', {
-        mode: 'no-cors'
-      });
-      fetch(request).then(response => cache.put(request, response));
-      return cache.addAll(urlsToCache);
-    })
-  );
+    // Perform install steps
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(function (cache) {
+                console.log('Opened cache');
+                const request = new Request('https://www.google-analytics.com/analytics.js', {
+                    mode: 'no-cors'
+                });
+                fetch(request).then(response => cache.put(request, response));
+                return cache.addAll(urlsToCache);
+            })
+    );
 });
 
 self.addEventListener('fetch', function (event) {
-  var url = new URL(event.request.url);
+    var url = new URL(event.request.url);
 
-  if ((url.hostname === 'www.google-analytics.com' ||
-      url.hostname === 'ssl.google-analytics.com') &&
-    url.pathname === '/collect') {
-    event.respondWith(
-      fetch(event.request).then(function (response) {
-        if (response.status >= 400) {
-          throw Error('Error status returned from Google Analytics request.');
-        }
+    if ((url.hostname === 'www.google-analytics.com' ||
+            url.hostname === 'ssl.google-analytics.com') &&
+        url.pathname === '/collect') {
+        event.respondWith(
+            fetch(event.request).then(function (response) {
+                if (response.status >= 400) {
+                    throw Error('Error status returned from Google Analytics request.');
+                }
 
-        return response;
-      }).catch(function (error) {
-        getObjectStore(STORE_NAME, 'readwrite').add({
-          url: event.request.url,
-          timestamp: Date.now()
-        });
+                return response;
+            }).catch(function (error) {
+                getObjectStore(STORE_NAME, 'readwrite').add({
+                    url: event.request.url,
+                    timestamp: Date.now()
+                });
 
-        return error;
-      })
-    );
-  } else {
-    event.respondWith(
-      caches.match(event.request)
-      .then(function (response) {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
-    );
-  }
+                return error;
+            })
+        );
+    } else {
+        event.respondWith(
+            caches.match(event.request)
+                .then(function (response) {
+                // Cache hit - return response
+                    if (response) {
+                        return response;
+                    }
+                    return fetch(event.request);
+                })
+        );
+    }
 
 });
 
 self.addEventListener('activate', function (event) {
 
-  var cacheWhitelist = [CACHE_NAME]; //NOTE If we change files, change cache name so we update them
+    var cacheWhitelist = [CACHE_NAME]; //NOTE If we change files, change cache name so we update them
 
-  event.waitUntil(
-    caches.keys().then(function (cacheNames) {
-      return Promise.all(
-        cacheNames.map(function (cacheName) {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
+    event.waitUntil(
+        caches.keys().then(function (cacheNames) {
+            return Promise.all(
+                cacheNames.map(function (cacheName) {
+                    if (cacheWhitelist.indexOf(cacheName) === -1) {
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
         })
-      );
-    })
-  );
+    );
 });
 
 
@@ -109,25 +109,25 @@ var STORE_NAME = 'urls';
 // This is basic boilerplate for interacting with IndexedDB. Adapted from
 // https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB
 function openDatabaseAndReplayRequests() {
-  var indexedDBOpenRequest = indexedDB.open('offline-analytics', IDB_VERSION);
+    var indexedDBOpenRequest = indexedDB.open('offline-analytics', IDB_VERSION);
 
-  // This top-level error handler will be invoked any time there's an IndexedDB-related error.
-  indexedDBOpenRequest.onerror = function (error) {
-    console.error('IndexedDB error:', error);
-  };
+    // This top-level error handler will be invoked any time there's an IndexedDB-related error.
+    indexedDBOpenRequest.onerror = function (error) {
+        console.error('IndexedDB error:', error);
+    };
 
-  // This should only execute if there's a need to create a new database for the given IDB_VERSION.
-  indexedDBOpenRequest.onupgradeneeded = function () {
-    this.result.createObjectStore(STORE_NAME, {
-      keyPath: 'url'
-    });
-  };
+    // This should only execute if there's a need to create a new database for the given IDB_VERSION.
+    indexedDBOpenRequest.onupgradeneeded = function () {
+        this.result.createObjectStore(STORE_NAME, {
+            keyPath: 'url'
+        });
+    };
 
-  // This will execute each time the database is opened.
-  indexedDBOpenRequest.onsuccess = function () {
-    idbDatabase = this.result;
-    replayAnalyticsRequests();
-  };
+    // This will execute each time the database is opened.
+    indexedDBOpenRequest.onsuccess = function () {
+        idbDatabase = this.result;
+        replayAnalyticsRequests();
+    };
 }
 
 // Open the IndexedDB and check for requests to replay each time the service worker starts up.
@@ -138,50 +138,50 @@ openDatabaseAndReplayRequests();
 
 // Helper method to get the object store that we care about.
 function getObjectStore(storeName, mode) {
-  return idbDatabase.transaction(storeName, mode).objectStore(storeName);
+    return idbDatabase.transaction(storeName, mode).objectStore(storeName);
 }
 
 function replayAnalyticsRequests() {
-  var savedRequests = [];
+    var savedRequests = [];
 
-  getObjectStore(STORE_NAME).openCursor().onsuccess = function (event) {
-    // See https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB#Using_a_cursor
-    var cursor = event.target.result;
+    getObjectStore(STORE_NAME).openCursor().onsuccess = function (event) {
+        // See https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB#Using_a_cursor
+        var cursor = event.target.result;
 
-    if (cursor) {
-      // Keep moving the cursor forward and collecting saved requests.
-      savedRequests.push(cursor.value);
-      cursor.continue();
-    } else {
-      // At this point, we have all the saved requests.
-      savedRequests.forEach(function (savedRequest) {
-        var queueTime = Date.now() - savedRequest.timestamp;
-        if (queueTime > STOP_RETRYING_AFTER) {
-          getObjectStore(STORE_NAME, 'readwrite').delete(savedRequest.url);
-          console.warn(' Request has been queued for %d milliseconds. ' +
-            'No longer attempting to replay.', queueTime);
+        if (cursor) {
+            // Keep moving the cursor forward and collecting saved requests.
+            savedRequests.push(cursor.value);
+            cursor.continue();
         } else {
-          // The qt= URL parameter specifies the time delta in between right now, and when the
-          // /collect request was initially intended to be sent. See
-          // https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#qt
-          var requestUrl = savedRequest.url + '&qt=' + queueTime;
+            // At this point, we have all the saved requests.
+            savedRequests.forEach(function (savedRequest) {
+                var queueTime = Date.now() - savedRequest.timestamp;
+                if (queueTime > STOP_RETRYING_AFTER) {
+                    getObjectStore(STORE_NAME, 'readwrite').delete(savedRequest.url);
+                    console.warn(' Request has been queued for %d milliseconds. ' +
+                        'No longer attempting to replay.', queueTime);
+                } else {
+                    // The qt= URL parameter specifies the time delta in between right now, and when the
+                    // /collect request was initially intended to be sent. See
+                    // https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters#qt
+                    var requestUrl = savedRequest.url + '&qt=' + queueTime;
 
-          fetch(requestUrl).then(function (response) {
-            if (response.status < 400) {
-              // If sending the /collect request was successful, then remove it from the IndexedDB.
-              getObjectStore(STORE_NAME, 'readwrite').delete(savedRequest.url);
-            } else {
-              // This will be triggered if, e.g., Google Analytics returns a HTTP 50x response.
-              // The request will be replayed the next time the service worker starts up.
-              console.error(' Replaying failed:', response);
-            }
-          }).catch(function (error) {
-            // This will be triggered if the network is still down. The request will be replayed again
-            // the next time the service worker starts up.
-            console.error(' Replaying failed:', error);
-          });
+                    fetch(requestUrl).then(function (response) {
+                        if (response.status < 400) {
+                            // If sending the /collect request was successful, then remove it from the IndexedDB.
+                            getObjectStore(STORE_NAME, 'readwrite').delete(savedRequest.url);
+                        } else {
+                            // This will be triggered if, e.g., Google Analytics returns a HTTP 50x response.
+                            // The request will be replayed the next time the service worker starts up.
+                            console.error(' Replaying failed:', response);
+                        }
+                    }).catch(function (error) {
+                        // This will be triggered if the network is still down. The request will be replayed again
+                        // the next time the service worker starts up.
+                        console.error(' Replaying failed:', error);
+                    });
+                }
+            });
         }
-      });
-    }
-  };
+    };
 }

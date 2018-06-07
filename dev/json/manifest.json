@@ -1,6 +1,6 @@
 {
   "short_name": "MACAB",
-  "name": "MACAB (MAC A/B)",
+  "name": "MACAB",
   "icons": [
     {
       "src": "/images/icon-192.png",
@@ -13,7 +13,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/index.html?utm_source=homescreen",
+  "start_url": "/index.html?utm_source=direct&utm_medium=homescreen&utm_campaign=homescreen",
   "background_color": "#e6e6e6",
   "display": "standalone",
   "theme_color": "#a4141e"
