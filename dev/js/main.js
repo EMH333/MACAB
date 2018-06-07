@@ -80,24 +80,28 @@ function updateDay(sinceEpoch, fromCal) {
     var day = dates[currentDate];
     var add = 0;
     var total = parseInt(currentDate);
+    var properRefrence = "a"; //the before character (like this is an example, instead of, this is a example)
     while (day == "N") {
         add++;
         total = parseInt(currentDate) + parseInt(add);
         day = dates[total];
     }
+    if (day == "A") {
+        properRefrence = "an"
+    }
     if (!fromCal) {
         if (add == 1) {
-            u("#top-info").text("Tommorow is a:");
+            u("#top-info").text("Tommorow is " + properRefrence + ":");
         } else if (add > 0) {
-            u("#top-info").text("The next school day (" + add + " days from now), is a:");
+            u("#top-info").text("The next school day (" + add + " days from now), is " + properRefrence + ":");
         } else {
-            u("#top-info").text("Today is a:");
+            u("#top-info").text("Today is " + properRefrence + ":");
         }
     } else {
         if (total - daysSinceEpoch() == 1) {
-            u("#top-info").text("Tommorow is a:");
+            u("#top-info").text("Tommorow is " + properRefrence + ":");
         } else if (total - daysSinceEpoch() == 0) {
-            u("#top-info").text("Today is a:");
+            u("#top-info").text("Today is " + properRefrence + ":");
         } else {
             var options = {
                 weekday: 'long',
@@ -105,16 +109,16 @@ function updateDay(sinceEpoch, fromCal) {
                 month: 'short',
                 day: 'numeric'
             };
-            u("#top-info").text(addDays(total).toLocaleDateString('en-US', options) + " is a:");
+            u("#top-info").text(addDays(total).toLocaleDateString('en-US', options) + " is " + properRefrence + ":");
         }
     }
     u("#day").html(day);
 
-    if(dates[total]==null){
+    if (dates[total] == null) {
         u("#top-info").text("We Have No Information For That Date! Sorry!");
         u("#day").text("");
         u("#bottom-info").text("");
-    }else{
+    } else {
         u("#bottom-info").text("Day");
     }
 
@@ -140,7 +144,7 @@ function updateListeners() {
 document.addEventListener("DOMContentLoaded", function (event) {
     addSummer();
 
-    registerCalendarEventsAndRender();//Register calendar stuff and render all days
+    registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
 
