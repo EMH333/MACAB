@@ -12,6 +12,19 @@
     <!--<script aync src="https://unpkg.com/umbrellajs@2.10.1/umbrella.min.js"></script>-->
     <!--These scripts are not neccecary in order to load or do anything on this page-->
 
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+        ga('create', 'UA-66393601-5', 'auto');
+        ga('require', 'GTM-NXB3XCQ');
+        // The following line sets the dimension to the pageview request and sends page view
+        ga('send', 'pageview',{
+            'dimension1':  navigator.onLine ? "Online" : "Offline"
+        });
+    </script>
 </head>
 
 <body>
@@ -193,18 +206,4 @@
         </div>
         
     </div>
-
-
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-66393601-5', 'auto');
-    // The following line sets the dimension to the pageview request.
-    ga('send', 'pageview',{
-        'dimension1':  navigator.onLine ? "Online" : "Offline"
-    });
-    </script>
 </body>
