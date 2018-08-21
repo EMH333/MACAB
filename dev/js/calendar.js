@@ -73,8 +73,8 @@ function isLeapYear(year) {
     }
 }
 /**
- * 
- * @param {*} d the date 
+ *
+ * @param {*} d the date
  * @param {*} sign 1 if going forword, 0 if going backwards
  */
 function updateDate(d, sign) {
