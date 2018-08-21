@@ -18,7 +18,7 @@ function generateHTML(currentDate, daysSince) {
         classes = classes + " cal-today";
     } else {
         classes = classes + " cal-notactive";
-        if (dates[daysSince] == "N") {
+        if (dates[daysSince] == "N") {//TODO: change to anything but pre-aproved "A" and "B" days
             classes = classes + " cal-noschool";
         }
     }

@@ -1,7 +1,7 @@
 /* global u, Cal */
 //Origin is First of January 2018
 const EPOCH = new Date(2018, 0, 0);
-var dates = {
+var dates = {//TODO: move to own file for readability
     110: "N",
     111: "N",
     112: "N",
@@ -48,7 +48,7 @@ var dates = {
 };
 
 function addSummer() {
-    //NOTE THIS DATES ARE DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018
+    //NOTE THIS DATES ARE CURRENTLY DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018
     for (var index = 168; index < 247; index++) {
         dates[index] = "N";
     }
@@ -143,7 +143,7 @@ function updateListeners() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    addSummer();
+    addSummer();//Add summer no school days
 
     registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 

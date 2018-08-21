@@ -24,7 +24,7 @@ self.addEventListener('install', function (event) {
                 console.log('Opened cache');
                 const request = new Request('https://www.google-analytics.com/analytics.js', {
                     mode: 'no-cors'
-                });
+                });//Add google analytics to cache
                 fetch(request).then(response => cache.put(request, response));
                 return cache.addAll(urlsToCache);
             })
@@ -34,6 +34,7 @@ self.addEventListener('install', function (event) {
 self.addEventListener('fetch', function (event) {
     var url = new URL(event.request.url);
 
+    //handle google analytics requests
     if ((url.hostname === 'www.google-analytics.com' ||
             url.hostname === 'ssl.google-analytics.com') &&
         url.pathname === '/collect') {
@@ -53,7 +54,7 @@ self.addEventListener('fetch', function (event) {
                 return error;
             })
         );
-    } else {
+    } else {//handle all other requests
         event.respondWith(
             caches.match(event.request)
                 .then(function (response) {
