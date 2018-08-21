@@ -151,6 +151,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     updateListeners(); //add/update calendar listeners
 
+    setupClimate();
+
     //register service worker
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
