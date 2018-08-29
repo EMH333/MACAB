@@ -1,56 +1,14 @@
 /* global u, Cal */
 //Origin is First of January 2018
 const EPOCH = new Date(2018, 0, 0);
-var dates = {//TODO: move to own file for readability
-    110: "N",
-    111: "N",
-    112: "N",
-    113: "B",
-    114: "A",
-    115: "B",
-    116: "A",
-    117: "B",
-    118: "N",
-    119: "N",
-    120: "A",
-    121: "B",
-    122: "A",
-    123: "B",
-    124: "A",
-    125: "N",
-    126: "N",
-    132: "N",
-    133: "N",
-    139: "N",
-    140: "N",
-    146: "N",
-    147: "N",
-    148: "N",
-    149: "A",
-    150: "B",
-    151: "A",
-    152: "B",
-    153: "N",
-    154: "N",
-    155: "A",
-    156: "B",
-    157: "A",
-    158: "B",
-    159: "A",
-    160: "N",
-    161: "N",
-    162: "B",
-    163: "A",
-    164: "B",
-    165: "A",
-    166: "B",
-    167: "N",
-};
-
+var dates = Object.assign({}, yearStarting2017, yearStarting2018);
 function addSummer() {
-    //NOTE THIS DATES ARE CURRENTLY DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018
+    //NOTE THIS DATES ARE CURRENTLY DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018 AND 2019
     for (var index = 168; index < 247; index++) {
         dates[index] = "N";
+    }
+    for (var sum2019 = 532; sum2019 < 612; sum2019++) {
+        dates[sum2019] = "N";
     }
 }
 
