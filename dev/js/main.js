@@ -2,6 +2,7 @@
 //Origin is First of January 2018
 const EPOCH = new Date(2018, 0, 0);
 var dates = Object.assign({}, yearStarting2017, yearStarting2018);
+
 function addSummer() {
     //NOTE THIS DATES ARE CURRENTLY DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018 AND 2019
     for (var index = 168; index < 247; index++) {
@@ -48,29 +49,26 @@ function updateDay(sinceEpoch, fromCal) {
     if (day == "A") {
         properRefrence = "an";
     }
-    if (!fromCal) {
-        if (add == 1) {
-            u("#top-info").text("Tommorow is " + properRefrence + ":");
-        } else if (add > 0) {
-            u("#top-info").text("The next school day (" + add + " days from now), is " + properRefrence + ":");
-        } else {
-            u("#top-info").text("Today is " + properRefrence + ":");
-        }
+
+    var weekdayOptions = {
+        weekday: "long",
+    };
+    var dayOfTheWeek = addDays(total).toLocaleDateString("en-US", weekdayOptions);
+
+    if (total - daysSinceEpoch() == 1) {
+        u("#top-info").text("Tommorow (" + dayOfTheWeek + ") is " + properRefrence + ":");
+    } else if (total - daysSinceEpoch() == 0) {
+        u("#top-info").text("Today (" + dayOfTheWeek + ") is " + properRefrence + ":");
     } else {
-        if (total - daysSinceEpoch() == 1) {
-            u("#top-info").text("Tommorow is " + properRefrence + ":");
-        } else if (total - daysSinceEpoch() == 0) {
-            u("#top-info").text("Today is " + properRefrence + ":");
-        } else {
-            var options = {
-                weekday: "long",
-                year: "numeric",
-                month: "short",
-                day: "numeric"
-            };
-            u("#top-info").text(addDays(total).toLocaleDateString("en-US", options) + " is " + properRefrence + ":");
-        }
+        var options = {
+            weekday: "long",
+            year: "numeric",
+            month: "short",
+            day: "2-digit"
+        };
+        u("#top-info").text(addDays(total).toLocaleDateString("en-US", options) + " is " + properRefrence + ":");
     }
+
     u("#day").html(day);
 
     if (dates[total] == null) {
@@ -101,7 +99,7 @@ function updateListeners() {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    addSummer();//Add summer no school days
+    addSummer(); //Add summer no school days
 
     registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 
