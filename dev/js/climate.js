@@ -3,13 +3,15 @@ function setupClimate() {
     var modal = u("#climatePop").first();
     var yes = u("#climateYes");
     var no = u("#climateNo");
+    // Detects if device is in standalone mode
+    const standalone = () => ('standalone' in window.navigator) && (window.navigator.standalone);
 
-    if (getCookie("climate") === "yes" || localStorage.getItem("climate") === yes) {
+    if (getCookie("climate") === "yes" || localStorage.getItem("climate") === "yes") {
         //has alread seen climate stuff
         setCookie("climate", "yes", 365); //set cookie and local storage again to be sure
         localStorage.setItem('climate', 'yes');
-    } else {
-        modal.style.display = "block"; //display to user
+    } else if (standalone) {
+        modal.style.display = "block"; //display to user if haven't seen it and is has installed app
     }
 
     // Get the <span> element that closes the modal
@@ -21,11 +23,11 @@ function setupClimate() {
     //};
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
+    /*window.onclick = function (event) {
         if (event.target == modal) {
             //modal.style.display = "none";//Currently not using this as we want the user to answer the question
         }
-    };
+    };*/
 
     //if someone clicks yes
     yes.on("click", function (event) {
