@@ -10,7 +10,7 @@ function setupClimate() {
         //has alread seen climate stuff
         setCookie("climate", "yes", 365); //set cookie and local storage again to be sure
         localStorage.setItem('climate', 'yes');
-    } else if (standalone) {
+    } else if (standalone()) {
         modal.style.display = "block"; //display to user if haven't seen it and is has installed app
     }
 
