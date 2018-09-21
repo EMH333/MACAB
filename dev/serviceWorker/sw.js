@@ -7,6 +7,7 @@ var urlsToCache = [
     '/schedule.html',
     '/finals.html',
     '/climate.html',
+    '/hoco.html',
     '/css/style.css',
     '/js/main.js',
     '/images/icon-192.png',
