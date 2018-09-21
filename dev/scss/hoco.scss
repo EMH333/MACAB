@@ -1,0 +1,53 @@
+.hoco-base {
+    .hoco {
+        display: block;
+        max-width: 1000px;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    .levels {
+        color: red;
+        font-weight: bold;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .red{
+        background: red;
+    }
+
+    .black{
+        background: black;
+        color: white;
+    }
+
+    .white{
+        background: white;
+    }
+
+    .redAndWhite{
+        background: red;
+        color: white;
+    }
+
+    .blackAndGold{
+        background: black;
+        color: gold;
+    }
+
+    .space{
+        padding: 2px;
+        border-radius: 3px;
+    }
+
+    hr{
+        position: relative;
+        left: -5px;
+        max-width: 900px;
+    }
+}
