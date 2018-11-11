@@ -1,4 +1,4 @@
-var CACHE_NAME = 'abday-ethohampton-cache-v1.3';
+var CACHE_NAME = 'abday-ethohampton-cache-v1.3.1';
 var urlsToCache = [
     '/',
     '/index.html',
@@ -7,7 +7,7 @@ var urlsToCache = [
     '/schedule.html',
     '/finals.html',
     '/climate.html',
-    '/hoco.html',
+    //'/hoco.html',
     '/css/style.css',
     '/js/main.js',
     '/images/icon-192.png',
