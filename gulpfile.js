@@ -51,7 +51,7 @@ gulp.task('js', function () {
         jsbuild = jsbuild
             .pipe(stripdebug())
             .pipe(babel({
-                presets: ['es2015']
+                presets: ['@babel/env']
             }))
             .pipe(uglify().on('error', gulpUtil.log));
     }
@@ -123,7 +123,7 @@ gulp.task('sw', function () {
         jsbuild = jsbuild
             .pipe(stripdebug())
             .pipe(babel({
-                presets: ['es2015']
+                presets: ['@babel/env']
             }))
             .pipe(uglify().on('error', gulpUtil.log));
     }
@@ -161,7 +161,8 @@ gulp.task('watcher', function () {
 });
 
 
-gulp.task('run', ['html', 'js', 'css', 'fonts', 'json', 'img', 'sw']);
-gulp.task('watch', ['watcher', 'run']);
+//gulp.task('run', ['html', 'js', 'css', 'fonts', 'json', 'img', 'sw']);
+gulp.task('run', gulp.parallel('html', 'js', 'css', 'fonts', 'json', 'img', 'sw'));
+gulp.task('watch', gulp.series('watcher', 'run'));
 
-gulp.task('default', ['run']);
+gulp.task('default', gulp.series('run'));
