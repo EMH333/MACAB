@@ -140,22 +140,22 @@ gulp.task('watcher', function () {
     //gulp.watch(folder.src + 'images/**/*', ['images']);
 
     // html changes
-    gulp.watch(folder.src + 'html/**/*', ['html']);
+    gulp.watch(folder.src + 'html/**/*', gulp.task('html'));
 
     // javascript changes
-    gulp.watch(folder.src + 'js/**/*.js', ['js']);
+    gulp.watch(folder.src + 'js/**/*.js', gulp.task('js'));
 
     // css changes
-    gulp.watch(folder.src + 'scss/**/*', ['css']);
+    gulp.watch(folder.src + 'scss/**/*', gulp.task('css'));
 
     // json changes
-    gulp.watch(folder.src + 'json/**/*', ['json']);
+    gulp.watch(folder.src + 'json/**/*', gulp.task('json'));
 
     //image changes
-    gulp.watch(folder.src + 'images/**/*', ['img']);
+    gulp.watch(folder.src + 'images/**/*', gulp.task('img'));
 
     // service worker changes
-    gulp.watch(folder.src + 'serviceWorker/**/*.js', ['sw']);
+    gulp.watch(folder.src + 'serviceWorker/**/*.js', gulp.task('sw'));
 
     //gulp.watch(folder.src + 'components/**/*', ['vue']); //vue component changes
 });
@@ -163,6 +163,6 @@ gulp.task('watcher', function () {
 
 //gulp.task('run', ['html', 'js', 'css', 'fonts', 'json', 'img', 'sw']);
 gulp.task('run', gulp.parallel('html', 'js', 'css', 'fonts', 'json', 'img', 'sw'));
-gulp.task('watch', gulp.series('watcher', 'run'));
+gulp.task('watch', gulp.series('run', 'watcher'));
 
 gulp.task('default', gulp.series('run'));
