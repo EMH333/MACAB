@@ -8,7 +8,7 @@ function addSummer() {
     for (var index = 168; index < 247; index++) {
         dates[index] = "N";
     }
-    for (var sum2019 = 532; sum2019 < 612; sum2019++) {
+    for (var sum2019 = 534; sum2019 < 612; sum2019++) {
         dates[sum2019] = "N";
     }
 }
@@ -57,7 +57,7 @@ function updateDay(sinceEpoch, fromCal) {
     var dayOfTheWeek = addDays(total).toLocaleDateString("en-US", weekdayOptions);
 
     if (total - daysSinceEpoch() == 1) {
-        u("#top-info").text("Tommorow (" + dayOfTheWeek + ") is " + properRefrence + ":");
+        u("#top-info").text("Tomorrow (" + dayOfTheWeek + ") is " + properRefrence + ":");
     } else if (total - daysSinceEpoch() == 0) {
         u("#top-info").text("Today (" + dayOfTheWeek + ") is " + properRefrence + ":");
     } else {
