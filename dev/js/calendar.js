@@ -35,17 +35,8 @@ function clear() {
 }
 
 function getDayFirstDate(d) {
-    var tempd = new Date();
-    tempd.setFullYear(d.getFullYear());
-    tempd.setMonth(d.getMonth());
-    tempd.setDate(1);
-    tempd.setHours(0);
-    tempd.setMinutes(0);
-    tempd.setSeconds(0);
-    // var timeSince1970 = tempd.getTime();
-    // var daysSince1970 = Math.floor(timeSince1970/(1000*60*60*24));
-    // return (daysSince1970+4)%7;
-    return tempd.getDay();
+    var firstDay = new Date(d.getFullYear(), d.getMonth(), 1);
+    return firstDay.getDay();
 }
 
 function howManyDays(d) {
@@ -74,11 +65,12 @@ function isLeapYear(year) {
 }
 /**
  *
- * @param {*} d the date
+ * @param {Date} d the date
  * @param {*} sign 1 if going forword, 0 if going backwards
  */
 function updateDate(d, sign) {
     var m = d.getMonth();
+    d.setDate(1);//workaround to not use not skip certian months, as we just use the 'd' date as a month and year tracker
     if (sign) {
         if (m + 1 > 11) {
             d.setFullYear(d.getFullYear() + 1);
