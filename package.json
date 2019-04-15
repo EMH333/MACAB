@@ -4,12 +4,10 @@
   "description": "Designed to help MHS students tell what day it is",
   "main": "main.js",
   "dependencies": {
-    "autoprefixer": "^9.4.4",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
+    "autoprefixer": "^9.5.1",
     "css-mqpacker": "^7.0.0",
-    "cssnano": "^4.1.8",
-    "eslint": "^5.12.0",
+    "cssnano": "^4.1.10",
+    "eslint": "^5.16.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-concat": "^2.6.1",
@@ -21,7 +19,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-strip-debug": "^3.0.0",
-    "gulp-uglify": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
     "postcss-assets": "^5.0.0",
     "sw-offline-google-analytics": "^0.0.25"
   },
@@ -31,7 +29,7 @@
   "author": "Ethan Hampton",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3"
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3"
   }
 }
