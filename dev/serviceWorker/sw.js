@@ -1,4 +1,4 @@
-var CACHE_NAME = 'abday-ethohampton-cache-v1.4.2';
+var CACHE_NAME = 'abday-ethohampton-cache-v1.4.3';
 var urlsToCache = [
     '/',
     '/index.html',
@@ -13,8 +13,8 @@ var urlsToCache = [
     '/js/main.js',
     '/images/icon-192.png',
     '/images/uploadIcon.png',
-    'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css',
-    'https://unpkg.com/umbrellajs@2.10.1/umbrella.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css',
+    'https://unpkg.com/umbrellajs@3.1.0/umbrella.min.js',
     //'https://www.google-analytics.com/analytics.js',
 ];
 

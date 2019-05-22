@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>What Day is It?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script defer src="https://unpkg.com/umbrellajs@3.1.0/umbrella.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+        integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI=" crossorigin="anonymous" />
+
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
-    <script src="js/main.js"></script>
-    <!--<script src="https://unpkg.com/umbrellajs"></script>-->
-    <script aync src="https://unpkg.com/umbrellajs@2.10.1/umbrella.min.js"></script>
-    <!--This is a temporary thing to reduce redirects-->
-    <link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-        integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
+    <script defer src="js/main.js"></script>
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,6 +21,8 @@
     <meta name="apple-mobile-web-app-title" content="MACAB">
     <link rel="apple-touch-icon" href="images/icon-512.png">
     <link rel="icon" sizes="192x192" href="images/icon-192.png">
+    <meta property="og:title" content="MACAB" />
+    <meta property="og:image" content="images/icon-512.png" />
 
     <meta name="theme-color" content="#a4141e">
 
@@ -47,9 +49,13 @@
 </head>
 
 <body>
+    <div class="invisible">
+        <p>MACAB helps MHS students figure out if today is an A or B day</p>
+    </div>
     <div class="install" id="install-prompt">
         <p>Install this web app on your iPhone! <br>
-            Tap the share icon (<img height="30px" width="20px" src="images/uploadIcon.png" alt="">) and then "Add to
+            Tap the share icon ( <img height="30px" width="20px" src="images/uploadIcon.png" alt="Upload Icon"> ) and then
+            "Add to
             Home Screen"</p>
     </div>
     <div class="climate modal" id="climatePop">
@@ -70,8 +76,8 @@
             <img src="images/icon-192.png" alt="Logo" width="60" height="60">
             <h1>MACAB</h1>
         </div>
-        <div style="text-align: center;">
-            <p>Just keep swimming...</p>
+        <div class="tagline" style="text-align: center;">
+            <p>Apparently some people have problems with my taglines</p>
         </div> <!-- "daily tip" -->
         <div>
             <p class="info" id="top-info">Today is a:</p>
