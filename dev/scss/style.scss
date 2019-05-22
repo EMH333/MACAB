@@ -15,8 +15,6 @@ div {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 0em;
-    padding-left: 0em;
 }
 
 h1 {
@@ -38,12 +36,13 @@ h1 {
 }
 
 .info {
-    font-size: 2.75rem;
-    text-align: center;
-    color: #1c2228;
-    line-height: 100%;
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
+    padding-left: 0em;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.info p:nth-child(1n) {
+    page-break-after: always;
 }
 
 .day {
@@ -53,6 +52,13 @@ h1 {
     margin-top: 0.1em;
     line-height: 80%;
     color: #1c2228;
+}
+
+.info-text {
+    font-size: 2.75rem;
+    text-align: center;
+    color: #1c2228;
+    line-height: 100%;
 }
 
 #top-info {
@@ -73,10 +79,6 @@ h1 {
     display: block;
     animation-duration: 0.5s;
     opacity: 0;
-    /*
-    visibility: hidden;
-    transition: opacity 0.5s linear;
-    */
 }
 
 .tagline {
@@ -160,6 +162,7 @@ h1 {
 //    width: 0.4em;
 //}
 .footer {
+    padding-left: 0em;
     a {
         background: none !important;
         border: none;
