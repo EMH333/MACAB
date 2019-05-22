@@ -30,65 +30,68 @@
     }
 }
 
-#data_chooser {
-    width: 6em;
-    height: 2em;
-    border: solid 3px $picnic-primary;
-    margin-top: 0.5em;
-    margin-left: 33%;
-    text-align: center;
-}
+#calendar_container {
+    z-index: -1;
+    #data_chooser {
+        width: 6em;
+        height: 2em;
+        border: solid 3px $picnic-primary;
+        margin-top: 0.5em;
+        margin-left: 33%;
+        text-align: center;
+    }
 
-.arrow {
-    position: absolute;
-    top: 2px;
-}
+    .arrow {
+        position: absolute;
+        top: 2px;
+    }
 
-.left {
-    left: 1em;
-}
+    .left {
+        left: 1em;
+    }
 
-.right {
-    right: 1em;
-}
+    .right {
+        right: 1em;
+    }
 
-.arrow a {
-    text-decoration: none;
-}
+    .arrow a {
+        text-decoration: none;
+    }
 
-#calendar_display table {
-    table-layout: fixed;
-    width: 100%;
-    height: 100%;
-    margin-left: -0.6em;
-    margin-top: 0.5em;
-    text-align: left;
-}
+    #calendar_display table {
+        table-layout: fixed;
+        width: 100%;
+        height: 100%;
+        margin-left: -0.6em;
+        margin-top: 0.5em;
+        text-align: left;
+    }
 
-.cal-active {
-    background-color: $picnic-primary;
-    color: white;
-}
+    .cal-active {
+        background-color: $picnic-primary;
+        color: white;
+    }
 
-.cal-notactive {
-    background-color: transparent;
-    color: black;
-}
+    .cal-notactive {
+        background-color: transparent;
+        color: black;
+    }
 
-.cal-date {
-    //for future styling uses
-    //@extend .label;
-    font-size: 1em;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding: 0.2em 0.3em;
-}
+    .cal-date {
+        //for future styling uses
+        //@extend .label;
+        font-size: 1em;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 0.2em 0.3em;
+    }
 
-.cal-today {
-    background: #FF6666;
-    color: black;
-}
+    .cal-today {
+        background: #FF6666;
+        color: black;
+    }
 
-.cal-noschool {
-    background: dimgray;
+    .cal-noschool {
+        background: dimgray;
+    }
 }
