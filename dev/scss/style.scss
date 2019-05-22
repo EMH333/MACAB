@@ -100,6 +100,8 @@ h1 {
 //}
 .footer {
     padding-left: 0em;
+    flex-wrap: wrap;
+    align-content: space-between;
 
     a {
         background: none !important;
@@ -121,6 +123,10 @@ h1 {
 
     .footer-item {
         margin-bottom: 1em;
+    }
+
+    .footer-item:nth-child(2n) {
+        page-break-after: always;
     }
 }
 
