@@ -39,10 +39,10 @@ h1 {
     padding-left: 0em;
     flex-wrap: wrap;
     align-content: space-between;
-}
 
-.info p:nth-child(1n) {
-    page-break-after: always;
+    p {
+        width: 100%; //to get around having to pagebreak
+    }
 }
 
 .day {
@@ -51,6 +51,7 @@ h1 {
     margin-bottom: 0.1em;
     margin-top: 0.1em;
     line-height: 80%;
+    text-align: center;
     color: #1c2228;
 }
 
@@ -100,9 +101,6 @@ h1 {
 //}
 .footer {
     padding-left: 0em;
-    flex-wrap: wrap;
-    align-content: space-between;
-
     a {
         background: none !important;
         border: none;
@@ -125,9 +123,11 @@ h1 {
         margin-bottom: 1em;
     }
 
+    /*
     .footer-item:nth-child(2n) {
-        page-break-after: always;
+        margin-left: auto;
     }
+    */
 }
 
 article {
