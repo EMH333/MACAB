@@ -42,6 +42,7 @@ h1 {
 
     p {
         width: 100%; //to get around having to pagebreak
+        overflow-wrap: break-word;
     }
 }
 

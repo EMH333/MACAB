@@ -1,14 +1,14 @@
 /* global u, Cal */
 //Origin is First of January 2018
 const EPOCH = new Date(2018, 0, 0);
-var dates = Object.assign({}, yearStarting2017, yearStarting2018);
+var dates = Object.assign({}, yearStarting2017, yearStarting2018, yearStarting2019);
 
 function addSummer() {
     //NOTE THIS DATES ARE CURRENTLY DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018 AND 2019
     for (var index = 168; index < 247; index++) {
         dates[index] = "N";
     }
-    for (var sum2019 = 534; sum2019 < 612; sum2019++) {
+    for (var sum2019 = 534; sum2019 < 611; sum2019++) {
         dates[sum2019] = "N";
     }
 }
