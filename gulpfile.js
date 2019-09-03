@@ -2,7 +2,6 @@
 var
     // modules
     gulp = require('gulp'),
-    gulpUtil = require('gulp-util'),
     newer = require('gulp-newer'),
     htmlclean = require('gulp-htmlclean'),
     concat = require('gulp-concat'),
@@ -53,7 +52,7 @@ gulp.task('js', function () {
             .pipe(babel({
                 presets: ['@babel/env']
             }))
-            .pipe(uglify().on('error', gulpUtil.log));
+            .pipe(uglify().on('error', console.log));
     }
 
     return jsbuild.pipe(gulp.dest(folder.build + 'js/'));
@@ -125,7 +124,7 @@ gulp.task('sw', function () {
             .pipe(babel({
                 presets: ['@babel/env']
             }))
-            .pipe(uglify().on('error', gulpUtil.log));
+            .pipe(uglify().on('error', console.log));
     }
 
     return jsbuild.pipe(gulp.dest(folder.build));
