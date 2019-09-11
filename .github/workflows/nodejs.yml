@@ -19,7 +19,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install, and gulp build
       run: |
-        npm install
+        npm ci --unsafe-perm
         npx gulp
       env:
         CI: true
