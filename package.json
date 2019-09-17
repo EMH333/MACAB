@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "Designed to help MHS students tell what day it is",
   "main": "main.js",
-  "dependencies": {
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ethan Hampton",
+  "license": "ISC",
+  "devDependencies": {
     "autoprefixer": "^9.6.1",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
@@ -21,15 +27,8 @@
     "gulp-strip-debug": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "postcss-assets": "^5.0.0",
-    "sw-offline-google-analytics": "^0.0.25"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Ethan Hampton",
-  "license": "ISC",
-  "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5"
+    "sw-offline-google-analytics": "^0.0.25",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0"
   }
 }
