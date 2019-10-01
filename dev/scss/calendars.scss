@@ -31,6 +31,12 @@
 }
 
 #calendar_container {
+    width: 20em;
+    height: 20em;
+    border: solid 0px $picnic-primary;
+    position: relative;
+    display: block;
+    
     #data_chooser {
         width: 6em;
         height: 2em;

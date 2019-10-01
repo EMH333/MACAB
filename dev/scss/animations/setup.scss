@@ -1,0 +1,18 @@
+@import "fade-in";
+@import "fade-out";
+
+.animated {
+  animation-duration: 0.5s;
+
+  &.short {
+    animation-duration: 0.25s;
+  }
+
+  &.long {
+    animation-duration: 1s;
+  }
+
+  &.infinite {
+    animation-iteration-count: infinite;
+  }
+}

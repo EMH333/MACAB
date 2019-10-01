@@ -92,14 +92,13 @@ var displayCalendar = true;
 
 function toggleCal() {
     var x = document.getElementById("calendar_container");
-    x.classList.toggle("fadeIn");
-    x.classList.toggle("fadeOut");
     if (displayCalendar) {
-        x.classList.add("fadeIn");
-        x.classList.remove("fadeOut");
+        x.classList.add("fade-in");
+        x.classList.remove("fade-out");
+        x.classList.remove("invisible");
     } else {
-        x.classList.remove("fadeIn");
-        x.classList.add("fadeOut");
+        x.classList.remove("fade-in");
+        x.classList.add("fade-out");
     }
     displayCalendar = !displayCalendar;
 }
