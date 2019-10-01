@@ -72,9 +72,7 @@ gulp.task('fonts', function () {
 gulp.task('css', function () {
 
     var postCssOpts = [
-        autoprefixer({
-            browsers: ['last 2 versions', '> 2%']
-        }),
+        autoprefixer(),
         mqpacker
     ];
 
