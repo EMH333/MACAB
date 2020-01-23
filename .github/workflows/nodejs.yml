@@ -17,6 +17,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Install automake
+      run: apt-get install libtool automake autoconf nasm
     - name: npm install, and gulp build
       run: |
         npm install node-sass
