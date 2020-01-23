@@ -9,8 +9,9 @@
   },
   "author": "Ethan Hampton",
   "license": "ISC",
-  "browsers":[
-    "last 2 versions", "> 2%"
+  "browsers": [
+    "last 2 versions",
+    "> 2%"
   ],
   "devDependencies": {
     "@babel/core": "^7.8.3",
