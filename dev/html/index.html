@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="../json/manifest.json">
 
 <head>
     <meta charset="utf-8" />
@@ -10,17 +10,17 @@
 
     <script defer src="https://unpkg.com/umbrellajs@3.1.0/umbrella.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
-    <script defer src="js/main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../scss/style.scss" />
+    <script defer src="../js/main.js"></script>
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="MACAB">
-    <link rel="apple-touch-icon" href="images/icon-512.png">
-    <link rel="icon" sizes="192x192" href="images/icon-192.png">
+    <link rel="apple-touch-icon" href="../images/icon-512.png">
+    <link rel="icon" sizes="192x192" href="../images/icon-192.png">
     <meta property="og:title" content="MACAB" />
-    <meta property="og:image" content="images/icon-512.png" />
+    <meta property="og:image" content="../images/icon-512.png" />
 
     <meta name="theme-color" content="#a4141e">
 
@@ -39,7 +39,7 @@
 
         ga('create', 'UA-66393601-5', 'auto');
         ga('require', 'GTM-NXB3XCQ');
-        // The following line sets the dimension to the pageview request and sends page view
+        // The following line sets the dimension to the pageview request and sends page view//
         ga('send', 'pageview', {
             'dimension1': navigator.onLine ? "Online" : "Offline"
         });
@@ -53,7 +53,7 @@
     </div>
     <div class="install" id="install-prompt">
         <p>Install this web app on your iPhone! <br>
-            Tap the share icon ( <img height="30px" width="20px" src="images/uploadIcon.png" alt="Upload Icon"> ) and
+            Tap the share icon ( <img height="30px" width="20px" src="../images/uploadIcon.png" alt="Upload Icon"> ) and
             then "Add to Home Screen"</p>
     </div>
     <div class="climate modal" id="climatePop">
@@ -71,7 +71,7 @@
     </div>
     <div class="flex one top-space">
         <div>
-            <img src="images/icon-192.png" alt="Logo" width="60" height="60">
+            <img src="../images/icon-192.png" alt="Logo" width="60" height="60">
             <h1>MACAB</h1>
         </div>
         <div class="tagline" style="text-align: center;">
@@ -91,10 +91,10 @@
             <!--<a href="finals.html" class="footer-item pseudo button">Finals</a>-->
             <!--<a href="hoco.html" class="footer-item pseudo button">Homecoming</a>-->
             <!-- Done with homecoming-->
-            <a href="schedule.html" class="footer-item pseudo button">Schedules</a>
+            <a href="#TODO" class="footer-item pseudo button">Schedules</a>
         </div>
         <div class="footer">
-            <a href="about.html" class="footer-item pseudo button">About</a>
+            <a href="#TODO" class="footer-item pseudo button">About</a>
             <button onclick="toggleCal()" class="pseudo footer-item">Calendar</button>
         </div>
 

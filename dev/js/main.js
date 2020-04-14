@@ -1,7 +1,11 @@
 /* global u, Cal */
+var datesList = require('./dates.js');
+require('./climate.js');
+require('./calendar.js');
+
 //Origin is First of January 2018
 const EPOCH = new Date(2018, 0, 0);
-var dates = Object.assign({}, yearStarting2017, yearStarting2018, yearStarting2019);
+var dates = Object.assign({}, datesList.yearStarting2017, datesList.yearStarting2018, datesList.yearStarting2019);
 
 function addSummer() {
     //NOTE THIS DATES ARE CURRENTLY DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018, 2019 AND 2020
@@ -120,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     //register service worker
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-            .register('/sw.js')
+            .register('../serviceWorker/sw.js')
             .then(function () {
                 console.log("Service Worker Registered");
             });
