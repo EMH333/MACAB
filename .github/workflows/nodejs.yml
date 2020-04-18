@@ -35,6 +35,6 @@ jobs:
       run: |
         npm install node-sass
         npm install -D
-        npx gulp
+        npm run build
       env:
         CI: true
