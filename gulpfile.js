@@ -4,21 +4,18 @@ var
     gulp = require('gulp'),
     newer = require('gulp-newer'),
     htmlclean = require('gulp-htmlclean'),
-    concat = require('gulp-concat'),
-    deporder = require('gulp-deporder'),
     stripdebug = require('gulp-strip-debug'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     postcss = require('gulp-postcss'),
-    assets = require('postcss-assets'),
     autoprefixer = require('autoprefixer'),
     mqpacker = require('css-mqpacker'),
     cssnano = require('cssnano'),
-    ignore = require('gulp-ignore'),
     babel = require('gulp-babel'),
+    cp = require('child_process');
 
-    // development mode?
-    devBuild = false; //(process.env.NODE_ENV !== 'production'),
+// development mode?
+devBuild = false; //(process.env.NODE_ENV !== 'production'),
 
 // folders
 folder = {
@@ -42,9 +39,14 @@ gulp.task('html', function () {
 // JavaScript processing
 gulp.task('js', function () {
 
-    var jsbuild = gulp.src(folder.src + 'js/**/*.js')
-        .pipe(deporder())
-        .pipe(concat('main.js'));
+    /*
+      Use esbuild to create first iteration. If that fails then we screwed, idk what to do
+      Else, regardless it will give us a valid output for most browsers. That is what we use for dev,
+      in production we compile to older browsers and remove debug statements.
+    */
+    cp.execSync("npm run buildjs");
+
+    var jsbuild = gulp.src(folder.build + 'js/main.js');
 
     if (!devBuild) {
         jsbuild = jsbuild
@@ -112,9 +114,8 @@ gulp.task('img', function () {
 // ServiceWorker processing
 gulp.task('sw', function () {
 
-    var jsbuild = gulp.src(folder.src + 'serviceWorker/**/*.js')
-        .pipe(deporder())
-        .pipe(concat('sw.js'));
+    //Note this is grabing single file, sw.js, as it should
+    var jsbuild = gulp.src(folder.src + 'serviceWorker/**/sw.js');
 
     if (!devBuild) {
         jsbuild = jsbuild

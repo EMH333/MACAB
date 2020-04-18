@@ -621,3 +621,5 @@ var yearStarting2017 = {
     166: "B",
     167: "N",
 };
+
+module.exports = { yearStarting2017, yearStarting2018, yearStarting2019 };

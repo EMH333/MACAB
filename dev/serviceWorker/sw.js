@@ -1,8 +1,8 @@
-var CACHE_NAME = 'abday-ethohampton-cache-v1.6.0';
+var CACHE_NAME = 'abday-ethohampton-cache-v1.7.0';
 var urlsToCache = [
     '/',
     '/index.html',
-    '/index.html?utm_source=direct&utm_medium=homescreen&utm_campaign=homescreen',
+    '/index.html?utm_source=direct&utm_medium=homescreen&utm_campaign=homescreen',//TODO ignore query params for cache
     '/about.html',
     '/schedule.html',
     '/finals.html',
@@ -36,7 +36,7 @@ self.addEventListener('install', function (event) {
 self.addEventListener('fetch', function (event) {
     var url = new URL(event.request.url);
 
-    //handle google analytics requests
+    //handle google analytics requests TODO get rid of offline database b/c it provide no value and overcomplicates sw code
     if ((url.hostname === 'www.google-analytics.com' ||
             url.hostname === 'ssl.google-analytics.com') &&
         url.pathname === '/collect') {

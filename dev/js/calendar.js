@@ -1,3 +1,5 @@
+import {daysSinceEpoch, dates} from "./dateUtils";
+
 function generateCalendar(d) {
     var days = howManyDays(d);
     var shift = getDayFirstDate(d);
@@ -68,7 +70,7 @@ function isLeapYear(year) {
  * @param {Date} d the date
  * @param {*} sign 1 if going forword, 0 if going backwards
  */
-function updateDate(d, sign) {
+export function updateDate(d, sign) {
     var m = d.getMonth();
     d.setDate(1);//workaround to not use not skip certian months, as we just use the 'd' date as a month and year tracker
     if (sign) {
@@ -88,22 +90,7 @@ function updateDate(d, sign) {
     }
 }
 
-var displayCalendar = true;
-
-function toggleCal() {
-    var x = document.getElementById("calendar_container");
-    if (displayCalendar) {
-        x.classList.add("fade-in");
-        x.classList.remove("fade-out");
-        x.classList.remove("invisible");
-    } else {
-        x.classList.remove("fade-in");
-        x.classList.add("fade-out");
-    }
-    displayCalendar = !displayCalendar;
-}
-
-function registerCalendarEventsAndRender() {
+export function registerCalendarEventsAndRender() {
     var d = new Date();
     u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
     generateCalendar(d);

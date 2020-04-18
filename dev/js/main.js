@@ -1,43 +1,8 @@
 /* global u, Cal */
-//Origin is First of January 2018
-const EPOCH = new Date(2018, 0, 0);
-var dates = Object.assign({}, yearStarting2017, yearStarting2018, yearStarting2019);
-
-function addSummer() {
-    //NOTE THIS DATES ARE CURRENTLY DESIGNED TO BE ACTIVE FOR THE SUMMER OF 2018, 2019 AND 2020
-    for (var index = 168; index < 247; index++) {
-        dates[index] = "N";
-    }
-    for (var sum2019 = 534; sum2019 < 611; sum2019++) {
-        dates[sum2019] = "N";
-    }
-    for (var sum2020 = 894; sum2020<982;sum2020++){
-        dates[sum2020] = "N";
-    }
-}
-
-function daysSinceEpoch(n) {
-    var now;
-    if (n == null) {
-        now = new Date();
-    } else {
-        now = new Date(n);
-    }
-    //var start = new Date(now.getFullYear(), 0, 0);
-    var start = EPOCH; //This is uses our "epoch"
-    var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
-    var oneDay = 1000 * 60 * 60 * 24;
-    var day = Math.floor(diff / oneDay);
-    //console.log('Day of year: ' + day);
-    return day;
-}
-
-//Adds days to epoch, which makes it very easy to get dates
-function addDays(days) {
-    var result = new Date(EPOCH);
-    result.setDate(result.getDate() + days);
-    return result;
-}
+import { registerCalendarEventsAndRender } from "./calendar";
+import { setupClimate } from "./climate";
+import { } from "./install";
+import { dates, addSummer, EPOCH, addDays, daysSinceEpoch } from "./dateUtils";
 
 function updateDay(sinceEpoch, fromCal) {
     var currentDate = sinceEpoch;
@@ -83,9 +48,9 @@ function updateDay(sinceEpoch, fromCal) {
         u("#bottom-info").text("Day");
     }
 
-    if(fromCal){//only if from calendar
+    if (fromCal) {//only if from calendar
         //Sends date selected in form of YYYY-MM-DD to google anylitics so I can see what people are interested in
-        ga('send', 'event', 'Calendar', 'select', addDays(parseInt(currentDate)).toISOString().slice(0,10));
+        ga('send', 'event', 'Calendar', 'select', addDays(parseInt(currentDate)).toISOString().slice(0, 10));
     }
     console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
 }
@@ -104,6 +69,23 @@ function updateListeners() {
         target.addClass("cal-active");
         target.removeClass("cal-notactive");
     });
+
+    u("#toggleCal").on('click', toggleCal);
+}
+
+var displayCalendar = true;
+
+function toggleCal() {
+    var x = document.getElementById("calendar_container");
+    if (displayCalendar) {
+        x.classList.add("fade-in");
+        x.classList.remove("fade-out");
+        x.classList.remove("invisible");
+    } else {
+        x.classList.remove("fade-in");
+        x.classList.add("fade-out");
+    }
+    displayCalendar = !displayCalendar;
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
