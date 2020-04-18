@@ -2,9 +2,9 @@
 import { registerCalendarEventsAndRender } from "./calendar";
 import { setupClimate } from "./climate";
 import { } from "./install";
-import { dates, addSummer, EPOCH, addDays, daysSinceEpoch } from "./dateUtils";
+import { dates, addSummer, addDays, daysSinceEpoch } from "./dateUtils";
 
-function updateDay(sinceEpoch, fromCal) {
+export function updateDay(sinceEpoch, fromCal) {
     var currentDate = sinceEpoch;
     var day = dates[currentDate];
     var add = 0;
@@ -55,47 +55,12 @@ function updateDay(sinceEpoch, fromCal) {
     console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
 }
 
-function updateListeners() {
-    u(".cal-date").off('click'); //deregister previous
-    u(".cal-date").on('click', function (data) {
-        var target = u(data.target);
-        var date = target.data("date");
-        //console.log(date);
-        updateDay(date, true);
-        u(".cal-date").each(function (node, i) {
-            u(node).addClass("cal-notactive");
-            u(node).removeClass("cal-active");
-        });
-        target.addClass("cal-active");
-        target.removeClass("cal-notactive");
-    });
-
-    u("#toggleCal").on('click', toggleCal);
-}
-
-var displayCalendar = true;
-
-function toggleCal() {
-    var x = document.getElementById("calendar_container");
-    if (displayCalendar) {
-        x.classList.add("fade-in");
-        x.classList.remove("fade-out");
-        x.classList.remove("invisible");
-    } else {
-        x.classList.remove("fade-in");
-        x.classList.add("fade-out");
-    }
-    displayCalendar = !displayCalendar;
-}
-
 document.addEventListener("DOMContentLoaded", function (event) {
     addSummer(); //Add summer no school days
 
     registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
-
-    updateListeners(); //add/update calendar listeners
 
     setupClimate();
 

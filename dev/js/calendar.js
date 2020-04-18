@@ -1,4 +1,5 @@
-import {daysSinceEpoch, dates} from "./dateUtils";
+import { daysSinceEpoch, dates } from "./dateUtils";
+import { updateDay } from "./main";
 
 function generateCalendar(d) {
     var days = howManyDays(d);
@@ -90,10 +91,43 @@ export function updateDate(d, sign) {
     }
 }
 
+function updateListeners() {
+    u(".cal-date").off('click'); //deregister previous
+    u(".cal-date").on('click', function (data) {
+        var target = u(data.target);
+        var date = target.data("date");
+        //console.log(date);
+        updateDay(date, true);
+        u(".cal-date").each(function (node, i) {
+            u(node).addClass("cal-notactive");
+            u(node).removeClass("cal-active");
+        });
+        target.addClass("cal-active");
+        target.removeClass("cal-notactive");
+    });
+
+    u("#toggleCal").on('click', toggleCal);
+}
+
+var displayCalendar = true;
+function toggleCal() {
+    var x = document.getElementById("calendar_container");
+    if (displayCalendar) {
+        x.classList.add("fade-in");
+        x.classList.remove("fade-out");
+        x.classList.remove("invisible");
+    } else {
+        x.classList.remove("fade-in");
+        x.classList.add("fade-out");
+    }
+    displayCalendar = !displayCalendar;
+}
+
 export function registerCalendarEventsAndRender() {
     var d = new Date();
     u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
     generateCalendar(d);
+    updateListeners();
     u('.left').on('click', function () {
         updateDate(d, 0);
         u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
