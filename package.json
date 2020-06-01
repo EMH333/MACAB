@@ -16,7 +16,7 @@
     "> 2%"
   ],
   "devDependencies": {
-    "@babel/core": "^7.9.6",
+    "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.9.6",
     "autoprefixer": "^9.8.0",
     "css-mqpacker": "^7.0.0",
