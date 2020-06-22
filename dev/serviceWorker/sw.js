@@ -1,4 +1,4 @@
-var CACHE_NAME = 'abday-ethohampton-cache-v1.7.1';
+var CACHE_NAME = 'abday-ethohampton-cache-v1.7.2';
 var urlsToCache = [
     '/',
     '/index.html',
