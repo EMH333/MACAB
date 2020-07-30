@@ -29,7 +29,7 @@ module.exports = {
         "no-trailing-spaces":"warn",
     },
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 10,
         "sourceType": "module"
-      }
+    }
 };

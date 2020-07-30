@@ -5,14 +5,12 @@ var
     newer = require('gulp-newer'),
     htmlclean = require('gulp-htmlclean'),
     stripdebug = require('gulp-strip-debug'),
-    uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
     mqpacker = require('css-mqpacker'),
     cssnano = require('cssnano'),
-    babel = require('gulp-babel'),
-    cp = require('child_process');
+    esbuildPlugin = require('./GulpPlugins/esbuild');
 
 // development mode?
 devBuild = false; //(process.env.NODE_ENV !== 'production'),
@@ -39,22 +37,16 @@ gulp.task('html', function () {
 // JavaScript processing
 gulp.task('js', function () {
 
-    /*
-      Use esbuild to create first iteration. If that fails then we screwed, idk what to do
-      Else, regardless it will give us a valid output for most browsers. That is what we use for dev,
-      in production we compile to older browsers and remove debug statements.
-    */
-    cp.execSync("npm run buildjs");
-
-    var jsbuild = gulp.src(folder.build + 'js/main.js');
+    var jsbuild = gulp.src(folder.src + 'js/main.js').pipe(esbuildPlugin({
+        outfile: 'main.js',
+        target: 'es6',
+        bundle: true,
+        minify: !devBuild,
+    }));
 
     if (!devBuild) {
         jsbuild = jsbuild
-            .pipe(stripdebug())
-            .pipe(babel({
-                presets: ['@babel/env']
-            }))
-            .pipe(uglify().on('error', console.log));
+            .pipe(stripdebug());
     }
 
     return jsbuild.pipe(gulp.dest(folder.build + 'js/'));
@@ -115,15 +107,16 @@ gulp.task('img', function () {
 gulp.task('sw', function () {
 
     //Note this is grabing single file, sw.js, as it should
-    var jsbuild = gulp.src(folder.src + 'serviceWorker/**/sw.js');
+    var jsbuild = gulp.src(folder.src + 'serviceWorker/**/sw.js').pipe(esbuildPlugin({
+        outfile: 'sw.js',
+        target: 'es6',
+        bundle: true,
+        minify: !devBuild,
+    }));
 
     if (!devBuild) {
         jsbuild = jsbuild
-            .pipe(stripdebug())
-            .pipe(babel({
-                presets: ['@babel/env']
-            }))
-            .pipe(uglify().on('error', console.log));
+            .pipe(stripdebug());
     }
 
     return jsbuild.pipe(gulp.dest(folder.build));

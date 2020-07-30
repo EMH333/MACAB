@@ -25,10 +25,7 @@ function generateHTML(currentDate, daysSince) {
             classes = classes + " cal-noschool";
         }
     }
-    return `<span data-date=` + daysSince + ` class="` + classes + `">
-` + currentDate + `
-</span>
-`;
+    return `<span data-date=` + daysSince + ` class="` + classes + '">\n' + currentDate + "\n</span>\n";
 }
 
 function clear() {
