@@ -5,10 +5,11 @@ var
     newer = require('gulp-newer'),
     htmlclean = require('gulp-htmlclean'),
     stripdebug = require('gulp-strip-debug'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-dart-sass'),
     postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
-    mqpacker = require('css-mqpacker'),
+    cssCompressor = require('postcss-combine-media-query'),
+    uncss = require('uncss').postcssPlugin,
     cssnano = require('cssnano'),
     esbuildPlugin = require('./GulpPlugins/esbuild');
 
@@ -67,7 +68,11 @@ gulp.task('css', function () {
 
     var postCssOpts = [
         autoprefixer(),
-        mqpacker
+        cssCompressor,
+        uncss({
+            html: ['dev/html/*.html'],
+            ignore: [/\.cal.*/, '.invisible', '.visible', '.r', '.col', '.fade-in', '.fade-out']
+        })
     ];
 
     if (!devBuild) {
@@ -76,7 +81,7 @@ gulp.task('css', function () {
 
     return gulp.src(folder.src + 'scss/style.scss')
         .pipe(sass({
-            outputStyle: 'nested',
+            outputStyle: 'compressed',
             imagePath: 'images/',
             precision: 3,
             errLogToConsole: true
