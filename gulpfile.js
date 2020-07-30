@@ -110,7 +110,6 @@ gulp.task('sw', function () {
     var jsbuild = gulp.src(folder.src + 'serviceWorker/**/sw.js').pipe(esbuildPlugin({
         outfile: 'sw.js',
         target: 'es6',
-        bundle: true,
         minify: !devBuild,
     }));
 
