@@ -1,3 +1,4 @@
+import u from "umbrellajs";
 import { daysSinceEpoch, dates } from "./dateUtils";
 import { updateDay } from "./main";
 
@@ -25,7 +26,7 @@ function generateHTML(currentDate, daysSince) {
             classes = classes + " cal-noschool";
         }
     }
-    return `<span data-date=` + daysSince + ` class="` + classes + '">\n' + currentDate + "\n</span>\n";
+    return '<span data-date=' + daysSince + ' class="' + classes + '">\n' + currentDate + '\n</span>\n';
 }
 
 function clear() {

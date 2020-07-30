@@ -1,3 +1,4 @@
+import u from "umbrellajs";
 export function setupClimate() {
     // Get the modal
     var modal = u("#climatePop").first();

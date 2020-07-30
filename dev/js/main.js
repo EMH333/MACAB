@@ -1,8 +1,9 @@
-/* global u, Cal */
+/* global Cal */
 import { registerCalendarEventsAndRender } from "./calendar";
 import { setupClimate } from "./climate";
 import { } from "./install";
 import { dates, addSummer, addDays, daysSinceEpoch } from "./dateUtils";
+import u from "umbrellajs";
 
 export function updateDay(sinceEpoch, fromCal) {
     var currentDate = sinceEpoch;

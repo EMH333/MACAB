@@ -14,7 +14,6 @@ let urlsToCache = [
     '/js/main.js',
     '/images/icon-192.png',
     '/images/uploadIcon.png',
-    'https://unpkg.com/umbrellajs@3.1.0/umbrella.min.js',
 ];
 
 
