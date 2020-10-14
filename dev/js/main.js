@@ -1,7 +1,7 @@
 /* global Cal */
 import { registerCalendarEventsAndRender } from "./calendar";
 import { setupClimate } from "./climate";
-import { } from "./install";
+import { displayiosInstallPrompt } from "./install";
 import { dates, addSummer, addDays, daysSinceEpoch } from "./dateUtils";
 import u from "umbrellajs";
 
@@ -64,6 +64,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
 
     setupClimate();
+
+    displayiosInstallPrompt();
 
     //register service worker
     if ('serviceWorker' in navigator) {

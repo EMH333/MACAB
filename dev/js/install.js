@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function (event) {
+export function displayiosInstallPrompt() {
     // Detects if device is on iOS
     const isIos = () => {
         const userAgent = window.navigator.userAgent.toLowerCase();
@@ -11,4 +11,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
     if (isIos() && !isInStandaloneMode()) {
         u("#install-prompt").toggleClass("visible");
     }
-});
+}
