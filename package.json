@@ -24,7 +24,7 @@
     "autoprefixer": "^9.8.6",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
-    "esbuild": "^0.7.15",
+    "esbuild": "^0.7.21",
     "eslint": "^7.11.0",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
