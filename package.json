@@ -33,7 +33,7 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-newer": "^1.4.0",
     "gulp-postcss": "^9.0.0",
-    "gulp-strip-debug": "^3.0.0",
+    "gulp-strip-debug": "^4.0.0",
     "postcss-combine-media-query": "^1.0.1",
     "uncss": "^0.17.3"
   }
