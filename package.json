@@ -22,11 +22,11 @@
     "not ie_mob 0-12"
   ],
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "^10.2.6",
     "css-mqpacker": "^7.0.0",
-    "cssnano": "^4.1.11",
-    "esbuild": "^0.11.9",
-    "eslint": "^7.24.0",
+    "cssnano": "^5.0.5",
+    "esbuild": "^0.12.6",
+    "eslint": "^7.28.0",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
     "gulp-htmlclean": "^2.7.22",
@@ -34,6 +34,7 @@
     "gulp-newer": "^1.4.0",
     "gulp-postcss": "^9.0.0",
     "gulp-strip-debug": "^4.0.0",
+    "postcss": "^8.3.0",
     "postcss-combine-media-query": "^1.0.1",
     "uncss": "^0.17.3"
   }
