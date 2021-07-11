@@ -9,8 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx gulp",
-    "watch": "npx gulp watch"
+    "build": "gulp",
+    "watch": "gulp watch"
   },
   "author": "Ethan Hampton",
   "license": "ISC",
@@ -22,11 +22,11 @@
     "not ie_mob 0-12"
   ],
   "devDependencies": {
-    "autoprefixer": "^10.2.6",
+    "autoprefixer": "^10.3.0",
     "css-mqpacker": "^7.0.0",
-    "cssnano": "^5.0.5",
-    "esbuild": "^0.12.6",
-    "eslint": "^7.28.0",
+    "cssnano": "^5.0.6",
+    "esbuild": "^0.12.15",
+    "eslint": "^7.30.0",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
     "gulp-htmlclean": "^2.7.22",
@@ -34,7 +34,7 @@
     "gulp-newer": "^1.4.0",
     "gulp-postcss": "^9.0.0",
     "gulp-strip-debug": "^4.0.0",
-    "postcss": "^8.3.0",
+    "postcss": "^8.3.5",
     "postcss-combine-media-query": "^1.0.1",
     "uncss": "^0.17.3"
   }
