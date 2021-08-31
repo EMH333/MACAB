@@ -21,13 +21,13 @@ export function setupClimate() {
         modal.style.display = "none"; //hide module
         localStorage.setItem('climate', 'yes');
         setCookie("climate", "yes", 365);
-        ga('send', 'event', 'Climate Click', 'click', "Climate Yes");
+        //ga('send', 'event', 'Climate Click', 'click', "Climate Yes");
     });
 
     //if someone clicks yes
     no.on("click", function () {
         modal.style.display = "none"; //hide module
-        ga('send', 'event', 'Climate Click', 'click', "Climate No");
+        //ga('send', 'event', 'Climate Click', 'click', "Climate No");
         window.location.href = "climate.html";
     });
 

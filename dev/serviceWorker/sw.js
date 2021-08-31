@@ -22,37 +22,22 @@ self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(function (cache) {
-                console.log('Opened cache');
-                const request = new Request('https://www.google-analytics.com/analytics.js', {
-                    mode: 'no-cors'
-                });//Add google analytics to cache
-                fetch(request).then(response => cache.put(request, response));
                 return cache.addAll(urlsToCache);
             })
     );
 });
 
 self.addEventListener('fetch', function (event) {
-    let url = new URL(event.request.url);
-
-    //handle google analytics requests
-    if ((url.hostname === 'www.google-analytics.com' ||
-            url.hostname === 'ssl.google-analytics.com') &&
-        url.pathname === '/collect') {
-        event.respondWith(fetch(event.request));
-    } else {//handle all other requests
-        event.respondWith(
-            caches.match(event.request)
-                .then(function (response) {
+    event.respondWith(
+        caches.match(event.request)
+            .then(function (response) {
                 // Cache hit - return response
-                    if (response) {
-                        return response;
-                    }
-                    return fetch(event.request);
-                })
-        );
-    }
-
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request);
+            })
+    );
 });
 
 self.addEventListener('activate', function (event) {
