@@ -71,7 +71,8 @@ gulp.task('css', function () {
         cssCompressor,
         uncss({
             html: ['dev/html/*.html'],
-            ignore: [/\.cal.*/, '.invisible', '.visible', '.r', '.col', '.fade-in', '.fade-out']
+            htmlroot: 'public/',
+            ignore: [/\.cal.*/, '.invisible', '.visible', '.r', '.col', '.fade-in', '.fade-out'],
         })
     ];
 
