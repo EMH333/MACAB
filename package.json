@@ -32,7 +32,7 @@
     "gulp-htmlclean": "^2.7.22",
     "gulp-imagemin": "^7.1.0",
     "gulp-newer": "^1.4.0",
-    "gulp-postcss": "^9.0.0",
+    "gulp-postcss": "^9.0.1",
     "gulp-strip-debug": "^4.0.0",
     "postcss": "^8.3.5",
     "postcss-combine-media-query": "^1.0.1",
