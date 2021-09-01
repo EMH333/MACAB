@@ -22,7 +22,7 @@
     "not ie_mob 0-12"
   ],
   "devDependencies": {
-    "autoprefixer": "^10.3.0",
+    "autoprefixer": "^10.3.3",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^5.0.6",
     "esbuild": "^0.12.15",
