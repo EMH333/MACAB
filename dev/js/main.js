@@ -2,19 +2,19 @@
 import { registerCalendarEventsAndRender } from "./calendar";
 //import { setupClimate } from "./climate";
 import { displayiosInstallPrompt } from "./install";
-import { dates, addSummer, addDays, daysSinceEpoch } from "./dateUtils";
+import { getDate, addDays, daysSinceEpoch } from "./dateUtils";
 import u from "umbrellajs";
 
 export function updateDay(sinceEpoch, fromCal) {
     var currentDate = sinceEpoch;
-    var day = dates[currentDate];
+    var day = getDate(currentDate);
     var add = 0;
     var total = parseInt(currentDate);
     var properRefrence = "a"; //the before character (like this is an example, instead of, this is a example)
     while (day == "N") {
         add++;
         total = parseInt(currentDate) + parseInt(add);
-        day = dates[total];
+        day = getDate(total);
     }
     if (day == "A") {
         properRefrence = "an";
@@ -41,7 +41,7 @@ export function updateDay(sinceEpoch, fromCal) {
 
     u("#day").html(day);
 
-    if (dates[total] == null) {
+    if (getDate(total) == null) {
         u("#top-info").text("We Have No Information For That Date! Sorry!");
         u("#day").text("");
         u("#bottom-info").text("");
@@ -57,7 +57,7 @@ export function updateDay(sinceEpoch, fromCal) {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    addSummer(); //Add summer no school days
+    //addSummer(); //Add summer no school days
 
     registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 

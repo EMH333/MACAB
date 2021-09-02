@@ -1,5 +1,5 @@
 import u from "umbrellajs";
-import { daysSinceEpoch, dates } from "./dateUtils";
+import { daysSinceEpoch, getDate } from "./dateUtils";
 import { updateDay } from "./main";
 
 function generateCalendar(d) {
@@ -22,7 +22,7 @@ function generateHTML(currentDate, daysSince) {
         classes = classes + " cal-today";
     } else {
         classes = classes + " cal-notactive";
-        if (dates[daysSince] == "N") {//TODO: change to anything but pre-aproved "A" and "B" days
+        if (getDate(daysSince) == "N") {//TODO: change to anything but pre-aproved "A" and "B" days
             classes = classes + " cal-noschool";
         }
     }
