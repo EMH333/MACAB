@@ -3,12 +3,11 @@ let cacheWhitelist = [CACHE_NAME]; //NOTE If we change files, change cache name 
 let urlsToCache = [
     '/',
     '/index.html',
-    '/index.html?utm_source=direct&utm_medium=homescreen&utm_campaign=homescreen',//TODO ignore query params for cache
     '/about.html',
     '/schedule.html',
-    '/finals.html',
-    '/seniors.html',
-    '/climate.html',
+    //'/finals.html',
+    //'/seniors.html',
+    //'/climate.html',
     //'/hoco.html',
     '/css/style.css',
     '/js/main.js',
@@ -28,16 +27,25 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('fetch', function (event) {
-    event.respondWith(
-        caches.match(event.request)
-            .then(function (response) {
-                // Cache hit - return response
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request);
-            })
-    );
+    // always get fresh javascript and use cache for everything else
+    if (event.request.url.indexOf('main.js') > -1) {
+        event.respondWith(
+            fetch(event.request).catch(function () {
+                return caches.match(event.request);
+            }),
+        );
+    } else {
+        event.respondWith(
+            caches.match(event.request)
+                .then(function (response) {
+                    // Cache hit - return response
+                    if (response) {
+                        return response;
+                    }
+                    return fetch(event.request);
+                })
+        );
+    }
 });
 
 self.addEventListener('activate', function (event) {
