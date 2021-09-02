@@ -1,6 +1,6 @@
 //Storage for dates
 let yearStarting2021 = {
-    1346: "9th Grade Only",
+    1346: "9th and 10th Grade Only",
     1347: 'A',
     1348: 'B',
     1349: 'A',
