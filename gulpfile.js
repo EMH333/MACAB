@@ -70,9 +70,12 @@ gulp.task('css', function () {
         autoprefixer(),
         cssCompressor,
         uncss({
-            html: ['dev/html/*.html'],
-            htmlroot: 'public/',
+            html: ['public/*.html'],
             ignore: [/\.cal.*/, '.invisible', '.visible', '.r', '.col', '.fade-in', '.fade-out'],
+            jsdom: {
+                runScripts: "outside-only",
+            },
+            timeout: 100,
         })
     ];
 
@@ -158,7 +161,7 @@ gulp.task('watcher', function () {
 
 
 //gulp.task('run', ['html', 'js', 'css', 'fonts', 'json', 'img', 'sw']);
-gulp.task('run', gulp.parallel('html', 'js', 'css', 'fonts', 'json', 'img', 'sw'));
+gulp.task('run', gulp.parallel(gulp.series('html', 'js', 'css'), 'fonts', 'json', 'img', 'sw'));
 gulp.task('watch', gulp.series('run', 'watcher'));
 
 gulp.task('default', gulp.series('run'));
