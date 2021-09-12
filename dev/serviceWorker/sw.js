@@ -1,4 +1,4 @@
-let CACHE_NAME = 'abday-ethohampton-cache-v2.0.2';
+let CACHE_NAME = 'abday-ethohampton-cache-v2.1.0';
 let cacheWhitelist = [CACHE_NAME]; //NOTE If we change files, change cache name so we update them
 let urlsToCache = [
     '/',
