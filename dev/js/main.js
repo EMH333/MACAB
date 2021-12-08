@@ -1,11 +1,10 @@
-/* global Cal */
 import { registerCalendarEventsAndRender } from "./calendar";
 //import { setupClimate } from "./climate";
 import { displayiosInstallPrompt } from "./install";
 import { getDate, addDays, daysSinceEpoch } from "./dateUtils";
 import u from "umbrellajs";
 
-export function updateDay(sinceEpoch, fromCal) {
+export function updateDay(sinceEpoch) {
     var currentDate = sinceEpoch;
     var day = getDate(currentDate);
     var add = 0;
@@ -56,7 +55,7 @@ export function updateDay(sinceEpoch, fromCal) {
     console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
 }
 
-document.addEventListener("DOMContentLoaded", function (event) {
+document.addEventListener("DOMContentLoaded", function () {
     //addSummer(); //Add summer no school days
 
     registerCalendarEventsAndRender(); //Register calendar stuff and render all days

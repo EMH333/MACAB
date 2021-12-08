@@ -25,11 +25,11 @@ module.exports = {
         // disable rules from base configurations
         "no-console": "off",
         "no-undef": "off",
-        "no-unused-vars": "off",
+        //"no-unused-vars": "off",
         "no-trailing-spaces":"warn",
     },
     "parserOptions": {
-        "ecmaVersion": 10,
+        "ecmaVersion": 12,
         "sourceType": "module"
     }
 };

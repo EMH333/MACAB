@@ -25,7 +25,7 @@
     "autoprefixer": "^10.4.0",
     "cssnano": "^5.0.12",
     "esbuild": "^0.14.2",
-    "eslint": "^7.32.0",
+    "eslint": "^8.4.1",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
     "gulp-htmlclean": "^2.7.22",

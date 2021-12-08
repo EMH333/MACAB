@@ -1,3 +1,5 @@
+import u from "umbrellajs";
+
 export function displayiosInstallPrompt() {
     // Detects if device is on iOS
     const isIos = () => {

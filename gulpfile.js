@@ -14,10 +14,10 @@ var
     esbuildPlugin = require('./GulpPlugins/esbuild');
 
 // development mode?
-devBuild = false; //(process.env.NODE_ENV !== 'production'),
+var devBuild = false; //(process.env.NODE_ENV !== 'production'),
 
 // folders
-folder = {
+var folder = {
     src: 'dev/',
     build: 'public/'
 };

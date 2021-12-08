@@ -76,7 +76,7 @@ function updateListeners() {
         var date = target.data("date");
         //console.log(date);
         updateDay(date, true);
-        u(".cal-date").each(function (node, i) {
+        u(".cal-date").each(function (node) {
             u(node).addClass("cal-notactive");
             u(node).removeClass("cal-active");
         });
