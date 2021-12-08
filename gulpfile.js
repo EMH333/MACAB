@@ -5,12 +5,10 @@ var
     newer = require('gulp-newer'),
     htmlclean = require('gulp-htmlclean'),
     stripdebug = require('gulp-strip-debug'),
-    sass = require('gulp-dart-sass'),
-    postcss = require('gulp-postcss'),
+    sassPlugin = require('esbuild-sass-plugin').sassPlugin,
+    postcss = require('postcss'),
     autoprefixer = require('autoprefixer'),
-    cssCompressor = require('postcss-combine-media-query'),
     uncss = require('uncss').postcssPlugin,
-    cssnano = require('cssnano'),
     esbuildPlugin = require('./GulpPlugins/esbuild');
 
 // development mode?
@@ -68,7 +66,6 @@ gulp.task('css', function () {
 
     var postCssOpts = [
         autoprefixer(),
-        cssCompressor,
         uncss({
             html: ['public/*.html'],
             ignore: [/\.cal.*/, '.invisible', '.visible', '.r', '.col', '.fade-in', '.fade-out'],
@@ -79,18 +76,21 @@ gulp.task('css', function () {
         })
     ];
 
-    if (!devBuild) {
-        postCssOpts.push(cssnano);
-    }
-
     return gulp.src(folder.src + 'scss/style.scss')
-        .pipe(sass({
-            outputStyle: 'compressed',
-            imagePath: 'images/',
-            precision: 3,
-            errLogToConsole: true
-        }))
-        .pipe(postcss(postCssOpts))
+        .pipe(
+            esbuildPlugin({
+                outfile: 'style.css',
+                target: 'es6',
+                bundle: true,
+                minify: !devBuild,
+                plugins: [sassPlugin({
+                    outputStyle: 'compressed',
+                    async transform(source, resolveDir, filepath) {
+                        const {css} = await postcss(postCssOpts).process(source, {from: filepath});
+                        return css;
+                    }
+                })]
+            }))
         .pipe(gulp.dest(folder.build + 'css/'));
 
 });
