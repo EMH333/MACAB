@@ -31,7 +31,7 @@ h6 {
 }
 
 li {
-  margin: 0 0 $picnic-separation / 2;
+  margin: 0 0 $picnic-separation * 0.5;
 }
 
 a {
@@ -45,14 +45,14 @@ a {
 // The <pre> doesn't have a nice style from Normalize.css
 
 code {
-  padding: $picnic-separation / 2 $picnic-separation;
+  padding: $picnic-separation * 0.5 $picnic-separation;
   font-size: .8em;
   background: #f5f5f5;
 }
 
 pre {
   text-align: left;
-  padding: $picnic-separation / 2 $picnic-separation;
+  padding: $picnic-separation * 0.5 $picnic-separation;
   background: #f5f5f5;
   border-radius: $picnic-radius;
 
