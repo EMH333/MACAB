@@ -23,7 +23,7 @@
   ],
   "devDependencies": {
     "autoprefixer": "^10.4.0",
-    "esbuild": "^0.14.10",
+    "esbuild": "^0.14.16",
     "esbuild-sass-plugin": "^1.6.1",
     "eslint": "^8.4.1",
     "gulp": "^4.0.2",
