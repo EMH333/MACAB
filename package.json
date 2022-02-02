@@ -5,7 +5,7 @@
   "description": "Designed to help MHS students tell what day it is",
   "main": "main.js",
   "dependencies": {
-    "umbrellajs": "^3.2.3"
+    "umbrellajs": "^3.3.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,16 +22,16 @@
     "not ie_mob 0-12"
   ],
   "devDependencies": {
-    "autoprefixer": "^10.4.0",
-    "esbuild": "^0.14.10",
+    "autoprefixer": "^10.4.2",
+    "esbuild": "^0.14.17",
     "esbuild-sass-plugin": "^1.6.1",
-    "eslint": "^8.4.1",
+    "eslint": "^8.8.0",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
     "gulp-htmlclean": "^2.7.22",
     "gulp-newer": "^1.4.0",
     "gulp-strip-debug": "^4.0.0",
-    "postcss": "^8.4.4",
+    "postcss": "^8.4.6",
     "uncss": "^0.17.3"
   }
 }
