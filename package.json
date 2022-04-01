@@ -24,7 +24,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "esbuild": "^0.14.25",
-    "esbuild-sass-plugin": "^2.2.4",
+    "esbuild-sass-plugin": "^2.2.6",
     "eslint": "^8.10.0",
     "gulp": "^4.0.2",
     "gulp-dart-sass": "^1.0.2",
