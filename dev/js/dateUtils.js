@@ -1,14 +1,16 @@
-import { yearStarting2019, yearStarting2021 } from "./dates";
+import { yearStarting2021 } from "./dates";
 
 //Origin is First of January 2018
 export const EPOCH = new Date(2018, 0, 0);
-var dates = Object.assign({}, yearStarting2019, yearStarting2021);
+var dates = Object.assign({}, yearStarting2021);
 
 export function getDate(date) {
     // ignore all dates before start of 2021 school year and all after end of 2021 school year
     if (date < 1346 || date > 1628) {
         return "N";
     }
+
+    //TODO add handling for dynamically fetching days when not populated into dates object
 
     return dates[date];
 }
