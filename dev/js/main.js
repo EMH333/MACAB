@@ -1,5 +1,4 @@
 import { registerCalendarEventsAndRender } from "./calendar";
-//import { setupClimate } from "./climate";
 import { displayiosInstallPrompt } from "./install";
 import { getDate, addDays, daysSinceEpoch } from "./dateUtils";
 import u from "umbrellajs";
@@ -61,8 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
     registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
-
-    //setupClimate();
 
     displayiosInstallPrompt();
 
