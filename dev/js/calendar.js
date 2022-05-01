@@ -2,7 +2,7 @@ import u from "umbrellajs";
 import { daysSinceEpoch, getDate } from "./dateUtils";
 import { updateDay } from "./main";
 
-function generateCalendar(d) {
+async function generateCalendar(d) {
     var days = howManyDays(d);
     var shift = getDayFirstDate(d);
     var date = new Date(d);
@@ -12,17 +12,17 @@ function generateCalendar(d) {
         var posi_col = Math.floor((i + shift) % 7);
         var currentDate = i + 1;
         var daysSince = daysSinceEpoch(date.setDate(currentDate));
-        u('#calendar_display .r' + posi_row).children('.col' + posi_col).html(generateHTML(currentDate, daysSince));
+        u('#calendar_display .r' + posi_row).children('.col' + posi_col).html(await generateHTML(currentDate, daysSince));
     }
 }
 
-function generateHTML(currentDate, daysSince) {
+async function generateHTML(currentDate, daysSince) {
     var classes = "cal-date button"; //cal-notactive"
     if (daysSince == daysSinceEpoch()) {
         classes = classes + " cal-today";
     } else {
         classes = classes + " cal-notactive";
-        if (getDate(daysSince) == "N") {//TODO: change to anything but pre-aproved "A" and "B" days
+        if (await getDate(daysSince) == "N") {//TODO: change to anything but pre-aproved "A" and "B" days
             classes = classes + " cal-noschool";
         }
     }
@@ -101,22 +101,22 @@ function toggleCal() {
     displayCalendar = !displayCalendar;
 }
 
-export function registerCalendarEventsAndRender() {
+export async function registerCalendarEventsAndRender() {
     var d = new Date();
     u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
-    generateCalendar(d);
+    await generateCalendar(d);
     updateListeners();
-    u('.left').on('click', function () {
+    u('.left').on('click', async function () {
         updateDate(d, 0);
         u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
-        generateCalendar(d);
+        await generateCalendar(d);
         updateListeners();
         return false;
     });
-    u('.right').on('click', function () {
+    u('.right').on('click', async function () {
         updateDate(d, 1);
         u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
-        generateCalendar(d);
+        await generateCalendar(d);
         updateListeners();
         return false;
     });

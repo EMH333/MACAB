@@ -3,16 +3,16 @@ import { displayiosInstallPrompt } from "./install";
 import { getDate, addDays, daysSinceEpoch } from "./dateUtils";
 import u from "umbrellajs";
 
-export function updateDay(sinceEpoch) {
+export async function updateDay(sinceEpoch) {
     var currentDate = sinceEpoch;
-    var day = getDate(currentDate);
+    var day = await getDate(currentDate);
     var add = 0;
     var total = parseInt(currentDate);
     var properRefrence = "a"; //the before character (like this is an example, instead of, this is a example)
     while (day == "N") {
         add++;
         total = parseInt(currentDate) + parseInt(add);
-        day = getDate(total);
+        day = await getDate(total);
     }
     if (day == "A") {
         properRefrence = "an";
@@ -39,7 +39,7 @@ export function updateDay(sinceEpoch) {
 
     u("#day").html(day);
 
-    if (getDate(total) == null) {
+    if (await getDate(total) == null) {
         u("#top-info").text("We Have No Information For That Date! Sorry!");
         u("#day").text("");
         u("#bottom-info").text("");
@@ -54,17 +54,19 @@ export function updateDay(sinceEpoch) {
     console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+
+document.addEventListener("DOMContentLoaded", async function () {
     //addSummer(); //Add summer no school days
 
-    registerCalendarEventsAndRender(); //Register calendar stuff and render all days
+    await registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
 
     displayiosInstallPrompt();
 
     //register service worker
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && !isLocalhost) {
         navigator.serviceWorker
             .register('/sw.js')
             .then(function () {

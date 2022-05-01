@@ -9,6 +9,7 @@ let urlsToCache = [
     '/js/main.js',
     '/images/icon-192.png',
     '/images/uploadIcon.png',
+    // we are not caching dates.json since it should be updated as soon as possible
 ];
 
 
