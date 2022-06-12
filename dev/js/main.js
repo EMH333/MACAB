@@ -9,7 +9,8 @@ export async function updateDay(sinceEpoch) {
     var add = 0;
     var total = parseInt(currentDate);
     var properRefrence = "a"; //the before character (like this is an example, instead of, this is a example)
-    while (day == "N") {
+    //make sure we don't loop forever
+    while (day == "N" && add < 150) {
         add++;
         total = parseInt(currentDate) + parseInt(add);
         day = await getDate(total);
@@ -39,7 +40,7 @@ export async function updateDay(sinceEpoch) {
 
     u("#day").html(day);
 
-    if (await getDate(total) == null) {
+    if (day == null || day == "N") {
         u("#top-info").text("We Have No Information For That Date! Sorry!");
         u("#day").text("");
         u("#bottom-info").text("");
