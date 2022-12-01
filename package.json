@@ -30,7 +30,7 @@
     "gulp-dart-sass": "^1.0.2",
     "gulp-htmlclean": "^2.7.22",
     "gulp-newer": "^1.4.0",
-    "gulp-strip-debug": "^4.0.0",
+    "gulp-strip-debug": "^5.0.0",
     "postcss": "^8.4.7",
     "uncss": "^0.17.3"
   }
