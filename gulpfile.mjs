@@ -1,15 +1,14 @@
 // Gulp.js configuration
-var
-    // modules
-    gulp = require('gulp'),
-    newer = require('gulp-newer'),
-    htmlclean = require('gulp-htmlclean'),
-    stripdebug = require('gulp-strip-debug'),
-    sassPlugin = require('esbuild-sass-plugin').sassPlugin,
-    postcss = require('postcss'),
-    autoprefixer = require('autoprefixer'),
-    uncss = require('uncss').postcssPlugin,
-    esbuildPlugin = require('./GulpPlugins/esbuild');
+import gulp from 'gulp';
+var { task, src: _src, dest, watch, parallel, series } = gulp;
+import newer from 'gulp-newer';
+import htmlclean from 'gulp-htmlclean';
+import stripdebug from 'gulp-strip-debug';
+import { sassPlugin } from 'esbuild-sass-plugin';
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
+import { postcssPlugin as uncss } from 'uncss';
+import esbuildPlugin from './GulpPlugins/esbuild.mjs';
 
 // development mode?
 var devBuild = false; //(process.env.NODE_ENV !== 'production'),
@@ -20,23 +19,23 @@ var folder = {
     build: 'public/'
 };
 // HTML processing
-gulp.task('html', function () {
+task('html', function () {
     var
         out = folder.build,
-        page = gulp.src(folder.src + 'html/**/*.html').pipe(newer(out));
+        page = _src(folder.src + 'html/**/*.html').pipe(newer(out));
 
     // minify production code
     if (!devBuild) {
         page = page.pipe(htmlclean());
     }
 
-    return page.pipe(gulp.dest(out));
+    return page.pipe(dest(out));
 });
 
 // JavaScript processing
-gulp.task('js', function () {
+task('js', function () {
 
-    var jsbuild = gulp.src(folder.src + 'js/main.js').pipe(esbuildPlugin({
+    var jsbuild = _src(folder.src + 'js/main.js').pipe(esbuildPlugin({
         outfile: 'main.js',
         target: 'es6',
         bundle: true,
@@ -48,21 +47,21 @@ gulp.task('js', function () {
             .pipe(stripdebug());
     }
 
-    return jsbuild.pipe(gulp.dest(folder.build + 'js/'));
+    return jsbuild.pipe(dest(folder.build + 'js/'));
 
 });
 
-gulp.task('fonts', function () {
+task('fonts', function () {
     //just pipe through fonts, only needs to be run at start
     var
         out = folder.build + 'fonts/',
-        fontbuild = gulp.src(folder.src + 'fonts/**/*').pipe(newer(out));
+        fontbuild = _src(folder.src + 'fonts/**/*').pipe(newer(out));
 
-    return fontbuild.pipe(gulp.dest(out));
+    return fontbuild.pipe(dest(out));
 });
 
 // CSS processing
-gulp.task('css', function () {
+task('css', function () {
 
     var postCssOpts = [
         autoprefixer(),
@@ -76,7 +75,7 @@ gulp.task('css', function () {
         })
     ];
 
-    return gulp.src(folder.src + 'scss/style.scss')
+    return _src(folder.src + 'scss/style.scss')
         .pipe(
             esbuildPlugin({
                 outfile: 'style.css',
@@ -91,32 +90,32 @@ gulp.task('css', function () {
                     }
                 })]
             }))
-        .pipe(gulp.dest(folder.build + 'css/'));
+        .pipe(dest(folder.build + 'css/'));
 
 });
 
-gulp.task('json', function () {
+task('json', function () {
     var
         out = folder.build,
-        jsonbuild = gulp.src(folder.src + 'json/**/*').pipe(newer(out));
+        jsonbuild = _src(folder.src + 'json/**/*').pipe(newer(out));
 
-    return jsonbuild.pipe(gulp.dest(out));
+    return jsonbuild.pipe(dest(out));
 });
 
-gulp.task('img', function () {
+task('img', function () {
     var
         out = folder.build + 'images/',
-        imgbuild = gulp.src(folder.src + 'images/**/*').pipe(newer(out));
+        imgbuild = _src(folder.src + 'images/**/*').pipe(newer(out));
 
-    return imgbuild.pipe(gulp.dest(out));
+    return imgbuild.pipe(dest(out));
 });
 
 
 // ServiceWorker processing
-gulp.task('sw', function () {
+task('sw', function () {
 
     //Note this is grabing single file, sw.js, as it should
-    var jsbuild = gulp.src(folder.src + 'serviceWorker/**/sw.js').pipe(esbuildPlugin({
+    var jsbuild = _src(folder.src + 'serviceWorker/**/sw.js').pipe(esbuildPlugin({
         outfile: 'sw.js',
         target: 'es6',
         minify: !devBuild,
@@ -127,41 +126,41 @@ gulp.task('sw', function () {
             .pipe(stripdebug());
     }
 
-    return jsbuild.pipe(gulp.dest(folder.build));
+    return jsbuild.pipe(dest(folder.build));
 
 });
 
 
 // watch for changes
-gulp.task('watcher', function () {
+task('watcher', function () {
 
     // image changes
     //gulp.watch(folder.src + 'images/**/*', ['images']);
 
     // html changes
-    gulp.watch(folder.src + 'html/**/*', gulp.task('html'));
+    watch(folder.src + 'html/**/*', task('html'));
 
     // javascript changes
-    gulp.watch(folder.src + 'js/**/*.js', gulp.task('js'));
+    watch(folder.src + 'js/**/*.js', task('js'));
 
     // css changes
-    gulp.watch(folder.src + 'scss/**/*', gulp.task('css'));
+    watch(folder.src + 'scss/**/*', task('css'));
 
     // json changes
-    gulp.watch(folder.src + 'json/**/*', gulp.task('json'));
+    watch(folder.src + 'json/**/*', task('json'));
 
     //image changes
-    gulp.watch(folder.src + 'images/**/*', gulp.task('img'));
+    watch(folder.src + 'images/**/*', task('img'));
 
     // service worker changes
-    gulp.watch(folder.src + 'serviceWorker/**/*.js', gulp.task('sw'));
+    watch(folder.src + 'serviceWorker/**/*.js', task('sw'));
 
     //gulp.watch(folder.src + 'components/**/*', ['vue']); //vue component changes
 });
 
 
 //gulp.task('run', ['html', 'js', 'css', 'fonts', 'json', 'img', 'sw']);
-gulp.task('run', gulp.parallel(gulp.series('html', 'js', 'css'), 'fonts', 'json', 'img', 'sw'));
-gulp.task('watch', gulp.series('run', 'watcher'));
+task('run', parallel(series('html', 'js', 'css'), 'fonts', 'json', 'img', 'sw'));
+task('watch', series('run', 'watcher'));
 
-gulp.task('default', gulp.series('run'));
+task('default', series('run'));

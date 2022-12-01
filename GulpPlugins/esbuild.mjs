@@ -1,11 +1,11 @@
-const { Transform } = require('stream');
-const { build } = require('esbuild');
-const PluginError = require('plugin-error');
-const Vinyl = require('vinyl');
+import { Transform } from 'stream';
+import { build } from 'esbuild';
+import PluginError from 'plugin-error';
+import Vinyl from 'vinyl';
 
 const PLUGIN_NAME = 'gulp-esbuild';
 
-module.exports = function(options = {}) {
+export default function(options = {}) {
     const entries = [];
 
     return new Transform({
@@ -51,4 +51,4 @@ module.exports = function(options = {}) {
             cb(null);
         }
     });
-};
+}
