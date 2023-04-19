@@ -3,6 +3,8 @@ import { displayiosInstallPrompt } from "./install";
 import { getDate, addDays, daysSinceEpoch } from "./dateUtils";
 import u from "umbrellajs";
 
+import "../scss/style.scss";
+
 export async function updateDay(sinceEpoch) {
     var currentDate = sinceEpoch;
     var day = await getDate(currentDate);

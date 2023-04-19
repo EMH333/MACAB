@@ -1,12 +1,12 @@
-let CACHE_NAME = 'abday-ethohampton-cache-v2.4.0';
+let CACHE_NAME = 'abday-ethohampton-cache-v3.0.0';
 let cacheWhitelist = [CACHE_NAME]; //NOTE If we change files, change cache name so we update them
 let urlsToCache = [
     '/',
     '/index.html',
     '/about.html',
     '/schedule.html',
-    '/css/style.css',
-    '/js/main.js',
+    'main.css',
+    'main.js',
     '/images/icon-192.png',
     '/images/uploadIcon.png',
     // we are not caching dates.json since it should be updated as soon as possible
