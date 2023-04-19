@@ -111,8 +111,7 @@ if (process.argv.length >= 2 && process.argv[2] === "serve") {
 
     esbuild.build(compileOptions)
         .then(output => {
-            fs.writeFileSync('./public/metafile.json', JSON.stringify(output.metafile));
-
+            //fs.writeFileSync('./public/metafile.json', JSON.stringify(output.metafile));
 
             //do some quick bundle calculations
             let bundleSize = 0;
