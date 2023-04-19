@@ -9,8 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp",
-    "watch": "gulp watch"
+    "build": "node build.mjs",
+    "watch": "node build.mjs dev"
   },
   "author": "Ethan Hampton",
   "license": "ISC",
@@ -26,11 +26,6 @@
     "esbuild": "^0.15.16",
     "esbuild-sass-plugin": "^2.4.2",
     "eslint": "^8.28.0",
-    "gulp": "^4.0.2",
-    "gulp-dart-sass": "^1.0.2",
-    "gulp-htmlclean": "^2.7.22",
-    "gulp-newer": "^1.4.0",
-    "gulp-strip-debug": "^5.0.0",
     "postcss": "^8.4.19",
     "uncss": "^0.17.3"
   }
