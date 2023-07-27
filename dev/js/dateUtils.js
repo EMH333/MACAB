@@ -1,8 +1,8 @@
-import { yearStarting2022 } from "./dates";
+import { yearStarting2023 } from "./dates";
 
 //Origin is First of January 2018
 export const EPOCH = new Date(2018, 0, 0);
-var dates = Object.assign({}, yearStarting2022);
+var dates = Object.assign({}, yearStarting2023);
 let fetchedDates = false;
 
 export async function getDate(date) {
@@ -16,8 +16,8 @@ export async function getDate(date) {
         fetchedDates = true;
     }
 
-    // ignore all dates before start of 2022 school year and all after end of 2022 school year
-    if (dates[date] === undefined && (date < 1710 || date > 1993)) {
+    // ignore all dates before start of 2023 school year and all after end of 2023 school year
+    if (dates[date] === undefined && (date < 2066 || date > 2356)) {
         return "N";
     }
 
