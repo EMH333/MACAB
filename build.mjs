@@ -91,16 +91,20 @@ if (!fs.existsSync(outDirectory)) {
 copyHTML();
 
 if (process.argv.length >= 2 && process.argv[2] === "serve") {
-    let serveOptions = esbuildOptions;
+    let serveOptions = compileOptions;
     serveOptions.minify = false;
 
-    esbuild.serve({
-        port: 3000,
-        servedir: `./${outDirectory}`,
-    }, serveOptions).then(() => {
-        // Call "stop" on the server when you're done
-        //server.stop()
-        //process.exit(0)
+    let context = esbuild.context(serveOptions);
+    context.then((cxt) => {
+        //console.log(cxt);
+        cxt.serve({
+            port: 3000,
+            servedir: `./${outDirectory}`,
+        }).then(() => {
+            // Call "stop" on the server when you're done
+            //server.stop()
+            //process.exit(0)
+        });
     });
 } else {
     //allow for non-minified code
@@ -120,7 +124,7 @@ if (process.argv.length >= 2 && process.argv[2] === "serve") {
                 if (file.endsWith(".map")) { continue; }
                 bundleSize += output.metafile.outputs[file].bytes;
             }
-            console.log(`JS bundle size: ${(bundleSize / 1024).toFixed(1)} kb`);
+            console.log(`JS bundle size: ${(bundleSize / 1024).toFixed(2)} kb`);
         })
         .catch((err) => { console.error(err); process.exit(1); });
 }
