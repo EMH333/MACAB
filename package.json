@@ -5,7 +5,7 @@
   "description": "Designed to help MHS students tell what day it is",
   "main": "main.js",
   "dependencies": {
-    "umbrellajs": "^3.3.1"
+    "umbrellajs": "^3.3.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
