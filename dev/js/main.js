@@ -6,11 +6,11 @@ import u from "umbrellajs";
 import "../scss/style.scss";
 
 export async function updateDay(sinceEpoch) {
-    var currentDate = sinceEpoch;
-    var day = await getDate(currentDate);
-    var add = 0;
-    var total = parseInt(currentDate);
-    var properRefrence = "a"; //the before character (like this is an example, instead of, this is a example)
+    let currentDate = sinceEpoch;
+    let day = await getDate(currentDate);
+    let add = 0;
+    let total = parseInt(currentDate);
+    let properRefrence = "a"; //the before character (like this is an example, instead of, this is a example)
     //make sure we don't loop forever
     while (day == "N" && add < 150) {
         add++;
@@ -21,17 +21,17 @@ export async function updateDay(sinceEpoch) {
         properRefrence = "an";
     }
 
-    var weekdayOptions = {
+    const weekdayOptions = {
         weekday: "long",
     };
-    var dayOfTheWeek = addDays(total).toLocaleDateString("en-US", weekdayOptions);
+    const dayOfTheWeek = addDays(total).toLocaleDateString("en-US", weekdayOptions);
 
     if (total - daysSinceEpoch() == 1) {
         u("#top-info").text("Tomorrow (" + dayOfTheWeek + ") is " + properRefrence + ":");
     } else if (total - daysSinceEpoch() == 0) {
         u("#top-info").text("Today (" + dayOfTheWeek + ") is " + properRefrence + ":");
     } else {
-        var options = {
+        const options = {
             weekday: "long",
             year: "numeric",
             month: "short",

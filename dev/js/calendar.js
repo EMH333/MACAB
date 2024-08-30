@@ -3,21 +3,21 @@ import { daysSinceEpoch, getDate } from "./dateUtils";
 import { updateDay } from "./main";
 
 async function generateCalendar(d) {
-    var days = howManyDays(d);
-    var shift = getDayFirstDate(d);
-    var date = new Date(d);
+    const days = howManyDays(d);
+    const shift = getDayFirstDate(d);
+    let date = new Date(d);
     clear();
-    for (var i = 0; i < days; i++) {
-        var posi_row = Math.floor((i + shift) / 7);
-        var posi_col = Math.floor((i + shift) % 7);
-        var currentDate = i + 1;
-        var daysSince = daysSinceEpoch(date.setDate(currentDate));
+    for (let i = 0; i < days; i++) {
+        let posi_row = Math.floor((i + shift) / 7);
+        let posi_col = Math.floor((i + shift) % 7);
+        let currentDate = i + 1;
+        let daysSince = daysSinceEpoch(date.setDate(currentDate));
         u('#calendar_display .r' + posi_row).children('.col' + posi_col).html(await generateHTML(currentDate, daysSince));
     }
 }
 
 async function generateHTML(currentDate, daysSince) {
-    var classes = "cal-date button"; //cal-notactive"
+    let classes = "cal-date button"; //cal-notactive"
     if (daysSince == daysSinceEpoch()) {
         classes = classes + " cal-today";
     } else {
@@ -36,7 +36,7 @@ function clear() {
 }
 
 function getDayFirstDate(d) {
-    var firstDay = new Date(d.getFullYear(), d.getMonth(), 1);
+    const firstDay = new Date(d.getFullYear(), d.getMonth(), 1);
     return firstDay.getDay();
 }
 
@@ -50,7 +50,7 @@ function howManyDays(d) {
  * @param {*} sign 1 if going forword, 0 if going backwards
  */
 export function updateDate(d, sign) {
-    var m = d.getMonth();
+    const m = d.getMonth();
     d.setDate(1);//workaround to not use not skip certian months, as we just use the 'd' date as a month and year tracker
     if (sign) {
         if (m + 1 > 11) {
@@ -72,8 +72,8 @@ export function updateDate(d, sign) {
 function updateListeners() {
     u(".cal-date").off('click'); //deregister previous
     u(".cal-date").on('click', function (data) {
-        var target = u(data.target);
-        var date = target.data("date");
+        let target = u(data.target);
+        let date = target.data("date");
         //console.log(date);
         updateDay(date, true);
         u(".cal-date").each(function (node) {
@@ -87,9 +87,9 @@ function updateListeners() {
     u("#toggleCal").on('click', toggleCal);
 }
 
-var displayCalendar = true;
+let displayCalendar = true;
 function toggleCal() {
-    var x = document.getElementById("calendar_container");
+    let x = document.getElementById("calendar_container");
     if (displayCalendar) {
         x.classList.add("fade-in");
         x.classList.remove("fade-out");
