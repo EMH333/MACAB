@@ -57,7 +57,7 @@ let compileOptions = {
     entryPoints: ['dev/js/main.js', 'dev/serviceWorker/sw.js'],
     entryNames: '[name]',
     outdir: 'public/',
-    target: 'es6',
+    target: 'es2020',
     bundle: true,
     minify: true,
     metafile: true,
