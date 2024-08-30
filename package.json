@@ -23,9 +23,9 @@
   ],
   "devDependencies": {
     "autoprefixer": "^10.4.14",
-    "esbuild": "^0.20.2",
-    "esbuild-sass-plugin": "^3.2.0",
-    "eslint": "^8.45.0",
+    "esbuild": "^0.23.1",
+    "esbuild-sass-plugin": "^3.3.0",
+    "eslint": "^9.9.0",
     "postcss": "^8.4.22",
     "uncss": "^0.17.3"
   }
