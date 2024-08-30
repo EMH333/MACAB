@@ -103,21 +103,22 @@ function toggleCal() {
 
 export async function registerCalendarEventsAndRender() {
     var d = new Date();
-    u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
-    await generateCalendar(d);
-    updateListeners();
-    u('.left').on('click', async function () {
-        updateDate(d, 0);
+    const updateCalendar = async () => {
         u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
         await generateCalendar(d);
         updateListeners();
+    }
+
+    u('.left').on('click', async function () {
+        updateDate(d, 0);
+        await updateCalendar();
         return false;
     });
     u('.right').on('click', async function () {
         updateDate(d, 1);
-        u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
-        await generateCalendar(d);
-        updateListeners();
+        await updateCalendar();
         return false;
     });
+
+    await updateCalendar();
 }

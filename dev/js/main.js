@@ -50,18 +50,12 @@ export async function updateDay(sinceEpoch) {
         u("#bottom-info").text("Day");
     }
 
-    /*if (fromCal) {//only if from calendar
-        //Sends date selected in form of YYYY-MM-DD to google anylitics so I can see what people are interested in
-        ga('send', 'event', 'Calendar', 'select', addDays(parseInt(currentDate)).toISOString().slice(0, 10));
-    }*/
     console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
 }
 
 const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
 
 document.addEventListener("DOMContentLoaded", async function () {
-    //addSummer(); //Add summer no school days
-
     await registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar

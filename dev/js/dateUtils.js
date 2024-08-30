@@ -2,6 +2,8 @@ import { yearStarting2023 } from "./dates";
 
 //Origin is First of January 2018
 export const EPOCH = new Date(2018, 0, 0);
+const ONE_DAY_IN_SECONDS = 86400000;
+
 let dates = Object.assign({}, yearStarting2023);
 let fetchedDates = false;
 
@@ -31,12 +33,10 @@ export function daysSinceEpoch(n) {
     } else {
         now = new Date(n);
     }
-    //let start = new Date(now.getFullYear(), 0, 0);
+
     const start = EPOCH; //This is uses our "epoch"
     const diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
-    const oneDay = 1000 * 60 * 60 * 24;
-    const day = Math.floor(diff / oneDay);
-    //console.log('Day of year: ' + day);
+    const day = Math.floor(diff / ONE_DAY_IN_SECONDS);
     return day;
 }
 
