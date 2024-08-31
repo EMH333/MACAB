@@ -1,4 +1,4 @@
-import u from "umbrellajs";
+import u from "umbrellajs/umbrella.esm.js";
 import { daysSinceEpoch, getDate } from "./dateUtils";
 import { updateDay } from "./main";
 
