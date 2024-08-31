@@ -18,8 +18,8 @@ export async function getDate(date) {
         fetchedDates = true;
     }
 
-    // ignore all dates before start of 2023 school year and all after end of 2023 school year
-    if (dates[date] === undefined && (date < 2066 || date > 2356)) {
+    // if date is not defined, then must be day off
+    if (dates[date] === undefined) {
         return "N";
     }
 
