@@ -3,11 +3,11 @@ import { daysSinceEpoch, getDate } from "./dateUtils";
 import { updateDay } from "./main";
 
 async function generateCalendar(d) {
-    const days = howManyDays(d);
+    const daysInCurrentMonth = howManyDays(d);
     const shift = getDayFirstDate(d);
     let date = new Date(d);
     clear();
-    for (let i = 0; i < days; i++) {
+    for (let i = 0; i < daysInCurrentMonth; i++) {
         let posi_row = Math.floor((i + shift) / 7);
         let posi_col = Math.floor((i + shift) % 7);
         let currentDate = i + 1;
@@ -30,8 +30,8 @@ async function generateHTML(currentDate, daysSince) {
 }
 
 function clear() {
-    u('#calendar_display tbody td').each(() => {
-        u(this).html('');
+    u('#calendar_display tbody td').each((node) => {
+        u(node).html('');
     });
 }
 
