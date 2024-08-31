@@ -19,18 +19,18 @@ async function generateCalendar(d) {
 async function generateHTML(currentDate, daysSince) {
     let classes = "cal-date button"; //cal-notactive"
     if (daysSince == daysSinceEpoch()) {
-        classes = classes + " cal-today";
+        classes += " cal-today";
     } else {
-        classes = classes + " cal-notactive";
+        classes += " cal-notactive";
         if (await getDate(daysSince) == "N") {//TODO: change to anything but pre-aproved "A" and "B" days
-            classes = classes + " cal-noschool";
+            classes += " cal-noschool";
         }
     }
-    return '<span data-date=' + daysSince + ' class="' + classes + '">\n' + currentDate + '\n</span>\n';
+    return `<span data-date=${daysSince} class="${classes}">\n${currentDate}\n</span>\n`;
 }
 
 function clear() {
-    u('#calendar_display tbody td').each(function () {
+    u('#calendar_display tbody td').each(() => {
         u(this).html('');
     });
 }
@@ -71,12 +71,12 @@ export function updateDate(d, sign) {
 
 function updateListeners() {
     u(".cal-date").off('click'); //deregister previous
-    u(".cal-date").on('click', function (data) {
+    u(".cal-date").on('click', (data) => {
         let target = u(data.target);
         let date = target.data("date");
         //console.log(date);
         updateDay(date, true);
-        u(".cal-date").each(function (node) {
+        u(".cal-date").each((node) => {
             u(node).addClass("cal-notactive");
             u(node).removeClass("cal-active");
         });
@@ -104,17 +104,17 @@ function toggleCal() {
 export async function registerCalendarEventsAndRender() {
     var d = new Date();
     const updateCalendar = async () => {
-        u('#data_chooser').html(d.getFullYear() + '-' + (d.getMonth() + 1));
+        u('#data_chooser').html(`${d.getFullYear()}-${d.getMonth() + 1}`);
         await generateCalendar(d);
         updateListeners();
     }
 
-    u('.left').on('click', async function () {
+    u('.left').on('click', async () => {
         updateDate(d, 0);
         await updateCalendar();
         return false;
     });
-    u('.right').on('click', async function () {
+    u('.right').on('click', async () => {
         updateDate(d, 1);
         await updateCalendar();
         return false;

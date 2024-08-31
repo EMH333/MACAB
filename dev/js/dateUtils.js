@@ -1,10 +1,10 @@
-import { yearStarting2023 } from "./dates";
+import { yearStarting2024 } from "./dates";
 
 //Origin is First of January 2018
 export const EPOCH = new Date(2018, 0, 0);
 const ONE_DAY_IN_SECONDS = 86400000;
 
-let dates = Object.assign({}, yearStarting2023);
+let dates = Object.assign({}, yearStarting2024);
 let fetchedDates = false;
 
 export async function getDate(date) {

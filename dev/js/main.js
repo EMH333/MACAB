@@ -27,9 +27,9 @@ export async function updateDay(sinceEpoch) {
     const dayOfTheWeek = addDays(total).toLocaleDateString("en-US", weekdayOptions);
 
     if (total - daysSinceEpoch() == 1) {
-        u("#top-info").text("Tomorrow (" + dayOfTheWeek + ") is " + properRefrence + ":");
+        u("#top-info").text(`Tomorrow (${dayOfTheWeek}) is ${properRefrence}:`);
     } else if (total - daysSinceEpoch() == 0) {
-        u("#top-info").text("Today (" + dayOfTheWeek + ") is " + properRefrence + ":");
+        u("#top-info").text(`Today (${dayOfTheWeek}) is ${properRefrence}:`);
     } else {
         const options = {
             weekday: "long",
@@ -37,7 +37,7 @@ export async function updateDay(sinceEpoch) {
             month: "short",
             day: "2-digit"
         };
-        u("#top-info").text(addDays(total).toLocaleDateString("en-US", options) + " is " + properRefrence + ":");
+        u("#top-info").text(`${addDays(total).toLocaleDateString("en-US", options)} is ${properRefrence}:`);
     }
 
     u("#day").html(day);
@@ -50,12 +50,12 @@ export async function updateDay(sinceEpoch) {
         u("#bottom-info").text("Day");
     }
 
-    console.log("Add:" + add + " Epoch:" + currentDate + " Total:" + total);
+    console.log(`Add:${add} Epoch:${currentDate} Total:${total}`);
 }
 
 const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
 
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", async () => {
     await registerCalendarEventsAndRender(); //Register calendar stuff and render all days
 
     updateDay(daysSinceEpoch(), false); //inital update, not from calendar
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if ('serviceWorker' in navigator && !isLocalhost) {
         navigator.serviceWorker
             .register('/sw.js')
-            .then(function () {
+            .then(() => {
                 console.log("Service Worker Registered");
             });
     }
