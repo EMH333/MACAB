@@ -107,7 +107,7 @@ export async function registerCalendarEventsAndRender() {
         u('#data_chooser').html(`${d.getFullYear()}-${d.getMonth() + 1}`);
         await generateCalendar(d);
         updateListeners();
-    }
+    };
 
     u('.left').on('click', async () => {
         updateDate(d, 0);

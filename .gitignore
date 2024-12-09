@@ -2,3 +2,4 @@
 /node_modules_old
 /public
 .cache
+.eslintcache

@@ -10,7 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build.mjs",
-    "watch": "node build.mjs dev"
+    "watch": "node build.mjs dev",
+    "lint": "npx eslint --cache --fix dev/js/ build.mjs"
   },
   "author": "Ethan Hampton",
   "license": "ISC",
@@ -22,10 +23,11 @@
     "not ie_mob 0-12"
   ],
   "devDependencies": {
+    "@eslint/js": "^9.16.0",
     "autoprefixer": "^10.4.14",
-    "esbuild": "^0.23.1",
+    "esbuild": "^0.24.0",
     "esbuild-sass-plugin": "^3.3.0",
-    "eslint": "^9.9.0",
+    "eslint": "^9.16.0",
     "postcss": "^8.4.22",
     "uncss": "github:uncss/uncss#b07a1dbfe41d5ffc1e14221c9f6e4743f6bbbe00"
   }
