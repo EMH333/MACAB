@@ -28,7 +28,7 @@
     "esbuild": "^0.24.0",
     "esbuild-sass-plugin": "^3.3.0",
     "eslint": "^9.16.0",
-    "postcss": "^8.4.22",
+    "postcss": "^8.5.1",
     "uncss": "github:uncss/uncss#b07a1dbfe41d5ffc1e14221c9f6e4743f6bbbe00"
   }
 }
