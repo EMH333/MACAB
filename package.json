@@ -23,7 +23,7 @@
     "not ie_mob 0-12"
   ],
   "devDependencies": {
-    "@eslint/js": "^9.16.0",
+    "@eslint/js": "^9.19.0",
     "autoprefixer": "^10.4.14",
     "esbuild": "^0.24.0",
     "esbuild-sass-plugin": "^3.3.0",
