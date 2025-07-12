@@ -27,7 +27,7 @@
     "autoprefixer": "^10.4.14",
     "esbuild": "^0.25.3",
     "esbuild-sass-plugin": "^3.3.0",
-    "eslint": "^9.19.0",
+    "eslint": "^9.31.0",
     "postcss": "^8.5.1",
     "uncss": "github:uncss/uncss#b07a1dbfe41d5ffc1e14221c9f6e4743f6bbbe00"
   }
