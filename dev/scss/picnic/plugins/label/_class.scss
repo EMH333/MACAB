@@ -1,6 +1,8 @@
+@use "../../themes/default/theme";
+
 // Label of text
-$picnic-label-padding: $picnic-separation * 0.5 $picnic-separation * 1.5 !default;
-$picnic-label-radius: $picnic-radius !default;
+$picnic-label-padding: theme.$picnic-separation * 0.5 theme.$picnic-separation * 1.5 !default;
+$picnic-label-radius: theme.$picnic-radius !default;
 
 // Styles
 %label {
@@ -9,8 +11,8 @@ $picnic-label-radius: $picnic-radius !default;
   margin: 0;
   padding: $picnic-label-padding;
   vertical-align: middle;
-  background: $picnic-primary;
-  color: $picnic-white;
+  background: theme.$picnic-primary;
+  color: theme.$picnic-white;
   border: 0;
   border-radius: $picnic-label-radius;
   width: auto;
@@ -24,19 +26,19 @@ $picnic-label-radius: $picnic-radius !default;
 
   // Colors
   &.success {
-    background: $picnic-success;
+    background: theme.$picnic-success;
   }
 
   &.warning {
-    background: $picnic-warning;
+    background: theme.$picnic-warning;
   }
 
   &.error {
-    background: $picnic-error;
+    background: theme.$picnic-error;
   }
 
   &.pseudo {
     background: transparent;
-    color: $picnic-black;
+    color: theme.$picnic-black;
   }
 }

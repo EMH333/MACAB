@@ -1,3 +1,5 @@
+@use "../../themes/default/theme";
+
 * {
   box-sizing: inherit;
 }
@@ -10,10 +12,10 @@ body {
 }
 
 body {
-  color: $picnic-black;
+  color: theme.$picnic-black;
   font-size: 1.1em;
   line-height: 1.5;
-  background: $picnic-white;
+  background: theme.$picnic-white;
 }
 
 main {
@@ -27,34 +29,34 @@ h4,
 h5,
 h6 {
   margin: 0;
-  padding: $picnic-separation 0;
+  padding: theme.$picnic-separation 0;
 }
 
 li {
-  margin: 0 0 $picnic-separation * 0.5;
+  margin: 0 0 theme.$picnic-separation * 0.5;
 }
 
 a {
-  color: $picnic-primary;
+  color: theme.$picnic-primary;
   text-decoration: none;
   box-shadow: none;
-  transition: $picnic-transition;
+  transition: theme.$picnic-transition;
 }
 
 
 // The <pre> doesn't have a nice style from Normalize.css
 
 code {
-  padding: $picnic-separation * 0.5 $picnic-separation;
+  padding: theme.$picnic-separation * 0.5 theme.$picnic-separation;
   font-size: .8em;
   background: #f5f5f5;
 }
 
 pre {
   text-align: left;
-  padding: $picnic-separation * 0.5 $picnic-separation;
+  padding: theme.$picnic-separation * 0.5 theme.$picnic-separation;
   background: #f5f5f5;
-  border-radius: $picnic-radius;
+  border-radius: theme.$picnic-radius;
 
   code {
     padding: 0;
@@ -64,7 +66,7 @@ pre {
 blockquote {
   padding: 0 0 0 1em;
   margin: 0 0 0 .1em;
-  box-shadow: inset 5px 0 rgba($picnic-black, .3);
+  box-shadow: inset 5px 0 rgba(theme.$picnic-black, .3);
 }
 
 label {

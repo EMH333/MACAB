@@ -1,7 +1,9 @@
+@use "../../themes/default/theme";
+
 // Fontello
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  margin: 0 $picnic-separation 0 0;
+  margin: 0 theme.$picnic-separation 0 0;
   }
 
 // Nice fontello trick from Ronen Ackerman ( http://stackoverflow.com/a/17561467 )

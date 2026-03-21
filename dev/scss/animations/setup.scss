@@ -1,5 +1,5 @@
-@import "fade-in";
-@import "fade-out";
+@use "fade-in";
+@use "fade-out";
 
 .animated {
   animation-duration: 0.5s;

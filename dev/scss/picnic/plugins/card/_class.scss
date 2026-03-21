@@ -1,10 +1,12 @@
+@use "../../themes/default/theme";
+
 // Card
 // This represents a self-contained, replicable entity
 
 // Variables
 $picnic-card-shadow: 0 !default;
-$picnic-card-border: $picnic-border !default;
-$picnic-card-radius: $picnic-radius !default;
+$picnic-card-border: theme.$picnic-border !default;
+$picnic-card-radius: theme.$picnic-radius !default;
 
 
 
@@ -19,8 +21,8 @@ $picnic-card-radius: $picnic-radius !default;
   border: $picnic-card-border;
   overflow: hidden;
   text-align: left;
-  background: $picnic-white;
-  margin-bottom: $picnic-separation;
+  background: theme.$picnic-white;
+  margin-bottom: theme.$picnic-separation;
   padding: 0;
   transition: all .3s ease;
 
@@ -87,7 +89,7 @@ $picnic-card-radius: $picnic-radius !default;
     }
 
   p {
-    margin: $picnic-separation * 0.5 0;
+    margin: theme.$picnic-separation * 0.5 0;
 
     &:first-child {
       margin-top: 0;
@@ -113,7 +115,7 @@ $picnic-card-radius: $picnic-radius !default;
     width: auto;
 
     &:hover {
-      color: $picnic-error;
+      color: theme.$picnic-error;
       }
     }
 
@@ -126,7 +128,7 @@ $picnic-card-radius: $picnic-radius !default;
     }
 
   .dangerous {
-    background: $picnic-error;
+    background: theme.$picnic-error;
     float: right;
     }
   }

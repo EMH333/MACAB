@@ -1,17 +1,17 @@
 // Top level variables for Picnic CSS
 // Note: some others are available under each specific plugin
 
-@import 'colors';
+@use 'colors';
 
 
 // Colors (from /themes/default/colors)
 $picnic-white: #fff !default;
 $picnic-black: #111 !default;
-$picnic-primary: $blue !default;
-$picnic-success: $green !default;
-$picnic-warning: $orange !default;
-$picnic-error: $red !default;
-$picnic-dull: $gray !default;
+$picnic-primary: colors.$blue !default;
+$picnic-success: colors.$green !default;
+$picnic-warning: colors.$orange !default;
+$picnic-error: colors.$red !default;
+$picnic-dull: colors.$gray !default;
 $picnic-color-variation: 10% !default;
 $picnic-transparency: .2 !default;
 

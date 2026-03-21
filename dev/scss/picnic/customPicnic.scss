@@ -1,21 +1,21 @@
 //! Picnic CSS http://www.picnicss.com/
 
 // Imports the base variable styles
-@import './themes/default/theme';
+@forward 'themes/default/theme' show $picnic-primary;
 
 // @use 'vendor/compass-breakpoint/stylesheets/breakpoint';
 
 // Normalize.css (external library)
-@import './plugins/normalize/plugin';
+@use 'plugins/normalize/plugin';
 
 // Generic styles for things like <body>, <a> and others
 // It also overwrites normalize.css a bit
-@import './plugins/generic/plugin';
-@import './plugins/fontello/plugin';
+@use 'plugins/generic/plugin' as plugin2;
+@use 'plugins/fontello/plugin' as plugin3;
 
 // Simple elements
-@import './plugins/label/plugin';
-@import './plugins/button/plugin';
+@use 'plugins/label/plugin' as plugin4;
+@use 'plugins/button/plugin' as plugin5;
 
 // Forms
 //@import './plugins/input/plugin';
@@ -24,17 +24,18 @@
 //@import './plugins/checkbox/plugin';
 
 // Components
-@import './plugins/table/plugin';
-$picnic-grid-sizes: 900 1200;
-$picnic-grid-count: one two three four;
-@import './plugins/grid/plugin';
+@use 'plugins/table/plugin' as plugin6;
+@use 'plugins/grid/plugin' as plugin7 with (
+  $picnic-grid-sizes: 900 1200,
+  $picnic-grid-count: one two three four
+);
 
 // Extra
 //@import './plugins/nav/plugin';
 
 //@import './plugins/stack/plugin';
-@import './plugins/card/plugin';
-@import './plugins/modal/plugin';
+@use 'plugins/card/plugin' as plugin8;
+@use 'plugins/modal/plugin' as plugin9;
 
 //@import './plugins/dropimage/plugin';
 //@import './plugins/tabs/plugin';

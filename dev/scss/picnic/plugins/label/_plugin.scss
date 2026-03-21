@@ -1,5 +1,5 @@
 // Inherit from the class
-@import 'class';
+@use 'class';
 
 .label {
   @extend %label;

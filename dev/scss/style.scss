@@ -1,8 +1,8 @@
-$picnic-primary: #a4141e;
-@import "picnic/customPicnic";
-@import "calendars";
-@import "install";
-@import "animations/setup";
+@use "picnic/customPicnic" with ($picnic-primary: #a4141e);
+@use "calendars";
+@use "install";
+@use "animations/setup";
+@use "picnic/themes/default/theme";
 
 body {
     height: auto;
@@ -96,7 +96,7 @@ h1 {
         border: none;
         padding: 0em 1em !important;
         margin: 0;
-        color: $picnic-primary !important;
+        color: theme.$picnic-primary !important;
         cursor: pointer;
     }
 
@@ -105,7 +105,7 @@ h1 {
         border: none;
         padding: 0em 1em !important;
         margin: 0;
-        color: $picnic-primary;
+        color: theme.$picnic-primary;
         cursor: pointer;
     }
 

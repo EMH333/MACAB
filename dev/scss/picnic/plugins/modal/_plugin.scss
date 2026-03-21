@@ -1,3 +1,6 @@
+@use "../../themes/default/theme";
+@use "../card/plugin" as card;
+
 .modal {
   text-align: center;
 
@@ -26,8 +29,8 @@
     position: fixed;
     margin: 0;
     border-radius: 0;
-    background: rgba($picnic-black, 3 * $picnic-transparency);
-    transition: $picnic-transition;
+    background: rgba(theme.$picnic-black, 3 * theme.$picnic-transparency);
+    transition: theme.$picnic-transition;
     z-index: 100000;
 
     &:before,
@@ -51,7 +54,7 @@
       z-index: 1000000;
 
       // Hiding effect
-      transition: $picnic-transition;
+      transition: theme.$picnic-transition;
       }
     }
 
@@ -63,7 +66,7 @@
       display: block;
       opacity: 1;
       max-height: 10000px;
-      transition: $picnic-transition;
+      transition: theme.$picnic-transition;
     }
 
     // This position is only for the modal, not for the overlay
@@ -77,7 +80,7 @@
   }
 }
 
-@media (max-width: $picnic-breakpoint) {
+@media (max-width: theme.$picnic-breakpoint) {
   .modal .overlay ~ * {
     min-width: 90%;
   }

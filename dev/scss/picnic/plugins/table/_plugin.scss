@@ -1,33 +1,35 @@
+@use "../../themes/default/theme";
+
 table {
   text-align: left;
   }
 
 td,
 th {
-  padding: $picnic-separation * 0.5 2.4em $picnic-separation * 0.5 $picnic-separation;
+  padding: theme.$picnic-separation * 0.5 2.4em theme.$picnic-separation * 0.5 theme.$picnic-separation;
   }
 
 th {
   text-align: left;
   font-weight: 900;
-  color: $picnic-white;
-  background-color: $picnic-primary;
+  color: theme.$picnic-white;
+  background-color: theme.$picnic-primary;
   }
 
 .success th {
-  background-color: $picnic-success;
+  background-color: theme.$picnic-success;
   }
 
 .warning th {
-  background-color: $picnic-warning;
+  background-color: theme.$picnic-warning;
   }
 
 .error th {
-  background-color: $picnic-error;
+  background-color: theme.$picnic-error;
   }
 
 .dull th {
-  background-color: $picnic-dull;
+  background-color: theme.$picnic-dull;
   }
 
 // Zebra stripes

@@ -1,3 +1,5 @@
+@use "picnic/themes/default/theme";
+
 .schedule {
     padding: 1em;
 
@@ -17,14 +19,14 @@
 #calendar_container {
     width: 20em;
     height: 20em;
-    border: solid 0px $picnic-primary;
+    border: solid 0px theme.$picnic-primary;
     position: relative;
     display: block;
     
     #data_chooser {
         width: 6em;
         height: 2em;
-        border: solid 3px $picnic-primary;
+        border: solid 3px theme.$picnic-primary;
         margin-top: 0.5em;
         margin-left: 33%;
         text-align: center;
@@ -57,7 +59,7 @@
     }
 
     .cal-active {
-        background-color: $picnic-primary;
+        background-color: theme.$picnic-primary;
         color: white;
     }
 

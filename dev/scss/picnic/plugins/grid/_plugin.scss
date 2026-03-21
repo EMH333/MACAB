@@ -1,6 +1,10 @@
-@import 'class';
+@use "sass:list";
+@use "sass:map";
+@use "sass:string";
+@use 'class';
+@use "../../themes/default/theme";
 
-$picnic-grid-gutter: $picnic-separation !default;
+$picnic-grid-gutter: theme.$picnic-separation !default;
 $picnic-grid-gutter-vertical: $picnic-grid-gutter !default;
 $picnic-grid-gutter-horizontal: $picnic-grid-gutter !default;
 
@@ -54,7 +58,7 @@ $picnic-grid-offpart-sizes: (
 
 
 @function in($list, $var) {
-  @return (false != index($list, $var));
+  @return (false != list.index($list, $var));
 }
 
 .flex {
@@ -102,15 +106,15 @@ $picnic-grid-offpart-sizes: (
 
 @each $count in $picnic-grid-count {
   .#{$count} > * {
-    width: map-get($picnic-grid-count-sizes, $count);
+    width: map.get($picnic-grid-count-sizes, $count);
   }
 }
 
 @each $i in $picnic-grid-sizes {
-  @media all and (min-width: unquote($i + 'px')) {
+  @media all and (min-width: string.unquote($i + 'px')) {
     @each $count in $picnic-grid-count {
       .#{$count}-#{$i} > * {
-        width: map-get($picnic-grid-count-sizes, $count);
+        width: map.get($picnic-grid-count-sizes, $count);
       }
     }
   }
@@ -120,24 +124,24 @@ $picnic-grid-offpart-sizes: (
 // Children sizing
 @each $part in $picnic-grid-part {
   .#{$part} {
-    width: map-get($picnic-grid-part-sizes, $part);
+    width: map.get($picnic-grid-part-sizes, $part);
   }
 }
 .none { display: none; }
 
 
 @each $i in $picnic-grid-sizes {
-  @media all and (min-width: unquote($i + 'px')) {
+  @media all and (min-width: string.unquote($i + 'px')) {
     @each $part in $picnic-grid-part {
       .#{$part}-#{$i} {
-        width: map-get($picnic-grid-part-sizes, $part);
+        width: map.get($picnic-grid-part-sizes, $part);
         display: block;
       }
     }
   }
 }
 @each $i in $picnic-grid-children {
-  @media all and (min-width: unquote($i + 'px')) {
+  @media all and (min-width: string.unquote($i + 'px')) {
     .none-#{$i} { display: none; }
   }
 }
@@ -146,16 +150,16 @@ $picnic-grid-offpart-sizes: (
 
 @each $part in $picnic-grid-offpart {
   .off-#{$part} {
-    margin-left: map-get($picnic-grid-offpart-sizes, $part);
+    margin-left: map.get($picnic-grid-offpart-sizes, $part);
   }
 }
 
 
 @each $i in $picnic-grid-sizes {
-  @media all and (min-width: unquote($i + 'px')) {
+  @media all and (min-width: string.unquote($i + 'px')) {
     @each $part in $picnic-grid-offpart {
       .off-#{$part}-#{$i} {
-        margin-left: map-get($picnic-grid-offpart-sizes, $part);
+        margin-left: map.get($picnic-grid-offpart-sizes, $part);
       }
     }
   }
