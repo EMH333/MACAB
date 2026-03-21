@@ -23,11 +23,11 @@
     "not ie_mob 0-12"
   ],
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@eslint/js": "^10.0.1",
     "autoprefixer": "^10.4.14",
     "esbuild": "^0.27.0",
-    "esbuild-sass-plugin": "^3.3.0",
-    "eslint": "^9.39.1",
+    "esbuild-sass-plugin": "^3.7.0",
+    "eslint": "^10.1.0",
     "postcss": "^8.5.1",
     "uncss": "github:uncss/uncss#b07a1dbfe41d5ffc1e14221c9f6e4743f6bbbe00"
   }
